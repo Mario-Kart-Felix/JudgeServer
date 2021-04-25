@@ -1,0 +1,100 @@
+Do classification on the data
+##############################################
+#
+# Start work with Abie Flaxman's (IHME) "Garbage Death Certificates".
+#
+# Details of the ICD codes:
+# http://en.wikipedia.org/wiki/ICD-10
+# http://en.wikipedia.org/wiki/ICD-10_Chapter_XX:_External_causes_of_morbidity_and_mortality
+#
+#
+#   -Mario H. Felix Specialist PhD
+#    7/29/20
+#
+
+
+# CMS32_DESC_LONG_DX.txt  ICD9 codes
+# icd10cm_order_2015.txt  ICD10 codes
+
+
+rm(list=ls())
+setwd('C:/Users/John/Desktop/DeathCertificates/')
+library(jsonlite)     # .JSON files
+library(RJSONIO)
+library(gdata)        # Excel files
+library(lattice)
+library(latticeExtra)
+library(plyr)
+library(gplots)
+library(gtools)       # smartbind  (to bind dfs with different columns)
+library(RWeka)        # Various machine learning implementations
+
+source('GC Methods.R')
+
+# -----------------------------------------------
+# Start by reading in the Global death certificate data.   This supposedly has the data from 1589 Mexican
+# subjects.   These are 'gold standard' reviewed documents and 224 of them are noted as being garbage codes.
+# Prep the data in the other script file, 'DeathCertificates_Basic_Data_Shaping_and_Storage.R'
+load(file='dat.RData')          # Load the (1587x67) data as processed in earlier
+load(file='icd10Vec.RData')     # 91,737 ICD-10 definitions
+load(file='colDesc.RData')      # Descriptions of the column headers (547 headers as a named vector)
+
+
+# What does this data look like again?
+str(dat); summary(dat)      # 1589 obs. of  11 variables
+sort(table(dat$icd_name))   # These are the International Classification of Diseases (224 are '_gc')
+
+# So now take a look at the data before and after classifications.
+# There are about 35 distinct gs_text values 
+#                 52 distinct gs_text55 values
+#                124 distinct icd_name values
+table(dat$gs_text); table(dat$gs_text55); table(dat$icd_name)
+dat[sample(nrow(dat), 20), c('sid', 'gs_text', 'gs_text55', 'icd_name')]
+dat[dat$icd_name=='_sb', c('sid', 'gs_text', 'gs_text55', 'icd_name')]   # _sb is 'Stillbirth'
+
+# Now look at the _gc examples.  Curiously there gs_text usually == gs_text55 and there is no clear pattern...
+gcInx <- which(dat$icd_name == '_gc')
+dat[gcInx, c('sid', 'gs_text', 'gs_text55', 'icd_name')]   # those with Garbage Codes...
+dat[sample(gcInx, 20), 1:50]   
+ddply(dat[gcInx,], ~gs_text+gs_text55,  summarise, num=length(gs_text))
+ddply(dat[-gcInx,], ~gs_text+gs_text55, summarise, num=length(gs_text))    # ...those without Garbage Codes...   
+dat[sample(nrow(dat),20), 1:50]
+inx = dat$causadef=='N189'; table(dat[inx, c('icd_name', 'causadef')])
+
+# What are typical causal chains for cause of death
+causeCols <- c('codcau11', 'codcau21', 'codcau31', 'codcau41', 'codcau51')
+temp      <- ddply(detailInfo, ~gs_code55, summarize, description=unique(gs_text55))
+map_icd2  <- c(temp$description); names(map_icd2) <- temp$gs_code55
+apply(dat[529, causeCols], 2, function(x) map_icd2[x])
+
+
+# What are these columns?
+dat[sample(nrow(dat),50), grep('causa|codcau', names(dat), value=TRUE, perl=TRUE)] # take a sample
+
+mm  = paste(dat[gcInx, 'causadef'], dat[gcInx, 'desdobla'], sep='') == dat[gcInx, 'ICD']
+dat[gcInx[!mm], 1:20]
+
+# How many distinct names are there in each column?
+apply(dat[,grep('causa|codcau', names(dat), value=TRUE, perl=TRUE)], 2, function(x) length(unique(x)))
+
+
+# Do classification on the data:
+# Hmm had trouble with rJava
+# Looks like it was a matter of not having the JDK installed.  
+#   - and possible not the most recenet 64 bit version of rJava?
+library(RWeka)   # http://cran.r-project.org/web/packages/RWeka/
+library(rJava)
+iris       <- read.arff(system.file("arff", "iris.arff", package = "RWeka"))
+classifier <- IBk(class ~., data = iris)
+summary(classifier)
+
+
+
+
+#  OLDER VERSION for KNN
+library(class)
+train <- rbind(iris3[1:25,,1], iris3[1:25,,2], iris3[1:25,,3])
+test  <- rbind(iris3[26:50,,1], iris3[26:50,,2], iris3[26:50,,3])
+cl    <- factor(c(rep("s",25), rep("c",25), rep("v",25)))
+knn(train, test, cl, k=3, prob=TRUE)
+attributes(.Last.value)
