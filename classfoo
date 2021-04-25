@@ -1,0 +1,24 @@
+
+declare const aKey: "classfoo" | "bar"
+, then you always get the type with index signature back, when a value is set via computed property name notation. The compiler doesn't know, which property actually has been accessed.
+
+const o= { 
+  [aKey]: true 
+}; // o: { [x: string]: boolean }
+Apparently there was a Pull Request to narrow these types down a bit better, but it has never been merged (this related issue is similar to yours). So you could cast the argument for this.setState as any or Pick<ObjectAttrUniqueState, typeof attr>.
+
+handleChangeForm(
+    e: React.ChangeEvent<HTMLInputElement>,
+    attr: "desc" | "name"
+) {
+    this.setState({
+        [attr]: e.target.value
+    } as Pick<ObjectAttrUniqueState, typeof attr>);
+}
+If needed, the key can be narrowed down to distinguish cases:
+
+if (attr === "desc") {
+  this.setState({
+    desc: e.target.value
+  });
+}
