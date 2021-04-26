@@ -1,0 +1,96 @@
+Creating a .pem File for SSL Certificate Installations
+.pem SSL Creation Instructions
+SSL .pem files (concatenated certificate container files), are frequently required for certificate installations when multiple certificates are being imported as one file.
+
+This article contains multiple sets of instructions that walk through various .pem file creation scenarios.
+
+Creating a .pem with the Entire SSL Certificate Trust Chain
+
+Log into your DigiCert Management Console and download your Intermediate (DigiCertCA.crt), Root (TrustedRoot.crt), and Primary Certificates (your_domain_name.crt).
+Open a text editor (such as wordpad) and paste the entire body of each certificate into one text file in the following order:
+
+The Primary Certificate - your_domain_name.crt
+The Intermediate Certificate - DigiCertCA.crt
+The Root Certificate - TrustedRoot.crt
+Make sure to include the beginning and end tags on each certificate. The result should look like this:
+
+-----BEGIN CERTIFICATE-----
+(Your Primary SSL certificate: your_domain_name.crt)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Your Intermediate certificate: DigiCertCA.crt)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Your Root certificate: TrustedRoot.crt)
+-----END CERTIFICATE-----
+
+Save the combined file as your_domain_name.pem. The .pem file is now ready to use.
+
+Creating a .pem with the Server and Intermediate Certificates
+
+Log into your DigiCert Management Console and download your Intermediate (DigiCertCA.crt) and Primary Certificates (your_domain_name.crt).
+Open a text editor (such as wordpad) and paste the entire body of each certificate into one text file in the following order:
+
+The Primary Certificate - your_domain_name.crt
+The Intermediate Certificate - DigiCertCA.crt
+Make sure to include the beginning and end tags on each certificate. The result should look like this:
+
+-----BEGIN CERTIFICATE-----
+(Your Primary SSL certificate: your_domain_name.crt)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Your Intermediate certificate: DigiCertCA.crt)
+-----END CERTIFICATE-----
+
+Save the combined file as your_domain_name.pem. The .pem file is now ready to use.
+
+Creating a .pem with the Private Key and Entire Trust Chain
+
+Log into your DigiCert Management Console and download your Intermediate (DigiCertCA.crt) and Primary Certificates (your_domain_name.crt).
+Open a text editor (such as wordpad) and paste the entire body of each certificate into one text file in the following order:
+
+The Private Key - your_domain_name.key
+The Primary Certificate - your_domain_name.crt
+The Intermediate Certificate - DigiCertCA.crt
+The Root Certificate - TrustedRoot.crt
+Make sure to include the beginning and end tags on each certificate. The result should look like this:
+
+-----BEGIN RSA PRIVATE KEY-----
+(Your Private Key: your_domain_name.key)
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+(Your Primary SSL certificate: your_domain_name.crt)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Your Intermediate certificate: DigiCertCA.crt)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Your Root certificate: TrustedRoot.crt)
+-----END CERTIFICATE-----
+
+Save the combined file as your_domain_name.pem. The .pem file is now ready to use.
+
+RELATED LINKS
+Apache/OpenSSL Export
+Exchange 2007 Export
+Java PFX Import
+Microsoft IIS 5/6 Export
+Microsoft IIS 7 Export
+ 
+SSL CERTIFICATES
+SSL Products
+SSL Plus
+SSL Certificate Comparison
+Wildcard Certificates
+Compare Wildcard SSL
+ 
+SSL SUPPORT
+Mac OS X SSL Installation
+Mac OS X CSR Generation
+SSL Cert Renew Util for IIS 6
+DigiCert
+language switcher icon
+ © 2003-2021 DigiCert® Inc • SSL Certificate Authority • All Rights Reserved | All trademarks displayed on this web site are the exclusive property of the respective holders.    
+Terms of UseMoney Back GuaranteePrivacy PolicyCookie PolicyLegal RepositoryNewsroomSite MapWebtrust Audits
+This site uses cookies and other tracking technologies to assist with navigation and your ability to provide feedback, analyze your use of our products and services, assist with our promotional and marketing efforts, and provide content from third parties. Click here to learn more and manage your preferences. Privacy Policy
+Accept Cookies
