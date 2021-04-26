@@ -1,0 +1,328 @@
+join with Github
+gitMemory :)
+
+
+
+
+
+
+
+
+If you are wondering where the data of this site comes from, please visit https://api.github.com/users/jayflo/events. GitMemory does not store any data, but only uses NGINX to cache data for a period of time. The idea behind GitMemory is simply to give users a better reading experience.
+
+Jaret jayflo
+ @bloomberg
+ Princeton, NJ
+repos
+
+23
+
+gists
+
+1
+
+followers
+
+8
+
+following
+
+2
+
+jayflo/vim-skip  55
+
+simple movement script for vim 
+evilwire/drp  2
+
+mathematic drp program at rutgers university website 
+jayflo/avro-map  2
+
+An AVRO utility 
+jayflo/conjure.js  1
+
+ 
+jayflo/dotfiles  1
+
+ 
+jayflo/fpscala  1
+
+ 
+jayflo/generator-angular-adaptive  1
+
+ 
+jayflo/NDiter  1
+
+Non-deterministic iterators for JS 
+jayflo/slice  1
+
+ 
+fiorda/test-build  0
+
+ issue openedOpenFIGI/api-examples
+
+input FIGI to get other id
+
+for example, I input FIGI and get cusip and sedol return
+
+created time in 15 days
+
+ forkfiorda/pika
+
+Pure Python RabbitMQ/AMQP 0-9-1 client library
+
+https://pika.readthedocs.io
+
+pika/pika  fiorda/pika
+fork in 23 days
+
+ issue commentOpenFIGI/api-examples
+
+API for search not working as Quick Search
+
+let me know if you have further question
+
+mosaichaoyan
+comment created time in 2 months
+
+issue closedOpenFIGI/api-examples
+
+API for search not working as Quick Search
+
+Hi,
+
+I am trying to get more information from OpenFigi on bonds. When I used the symbol provided by the ETF in OpenFigi Quick Search, it shows up. Screen Shot 2020-08-07 at 4 35 32 PM But when I try to get it using the API, it can't find it. Could someone help me with this? Thanks a lot!
+
+job = {
+    "query": "BY7RB31"
+}
+
+handler = urllib.request.HTTPHandler()
+opener = urllib.request.build_opener(handler)
+openfigi_url = 'https://api.openfigi.com/v2/search'
+request = urllib.request.Request(openfigi_url, data=bytes(json.dumps(job), encoding='utf-8'))
+request.add_header('Content-Type','application/json')
+if openfigi_apikey:
+    request.add_header('X-OPENFIGI-APIKEY', openfigi_apikey)
+request.get_method = lambda: 'POST'
+connection = opener.open(request)
+if connection.code != 200:
+    raise Exception('Bad response code {}'.format(str(response.status_code)))
+
+res = json.loads(connection.read().decode('utf-8'))
+print(res)
+
+>>{'data': []}
+closed time in 2 months
+
+mosaichaoyan
+ issue commentOpenFIGI/api-examples
+
+API for search not working as Quick Search
+
+with below payload, you should able to get back same result as from search page
+
+[
+	{
+		"idType": "ID_CINS", "idValue": "G17528269"
+	}
+]
+mosaichaoyan
+comment created time in 2 months
+
+ issue commentOpenFIGI/api-examples
+
+API for search not working as Quick Search
+
+Hello, I've got the same issue. Could you please help?
+
+v2/mapping request/response: image
+
+search on UI
+
+image
+
+mosaichaoyan
+comment created time in 2 months
+
+ issue commentOpenFIGI/api-examples
+
+Unable to send multiple types of the same parameter to /v2/search and /v2/filter
+
+I think for your purposes the mapping endpoint is preferable to search. From its documentation: 'The request should be an Array of Objects (or Mapping Jobs), e.g. [{...}, {...}, ...], where each Object has the following properties:..."
+
+Your syntax is not far off, but instead of enumerating elements (e.g. ["Common Stock","Mutual Fund"]), you enumerate entire queries/jobs, that are then executed in a single API call. Something like this will work:
+
+curl 'https://api.openfigi.com/v2/mapping'
+--request POST
+--header 'Content-Type: application/json'
+--data '[{"idType": "BASE_TICKER","idValue": "IBM", "securityType2": "Common Stock", "exchCode": "NEW YORK"}, {"idType":"BASE_TICKER", "idValue": "IBM", "securityType2":"Preferred Stock"}, {"idType":"BASE_TICKER", "idValue": "IBM", "securityType2":"Corp", "exchCode": "NEW YORK"}]'
+
+nghtstr
+comment created time in 2 months
+
+ issue commentOpenFIGI/api-examples
+
+Unable to send multiple types of the same parameter to /v2/search and /v2/filter
+
+I think for your purposes the mapping endpoint is preferable to search. From its documentation: 'The request should be an Array of Objects (or Mapping Jobs), e.g. [{...}, {...}, ...], where each Object has the following properties:..."
+
+Your syntax is not far off, but instead of enumerating elements (e.g. ["Common Stock","Mutual Fund"]), you enumerate entire queries/jobs, that are then executed in a single API call. Something like this will work:
+
+curl 'https://api.openfigi.com/v2/mapping' \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --header 'X-OPENFIGI-APIKEY: c55a1b6c-72ef-4531-9e56-c4e5393bdc49' \
+    --data '[{"idType": "BASE_TICKER","idValue": "IBM", "securityType2": "Common Stock", "exchCode": "NEW YORK"},
+        {"idType":"BASE_TICKER", "idValue": "IBM", "securityType2":"Preferred Stock"},
+        {"idType":"BASE_TICKER", "idValue": "IBM", "securityType2":"Corp", "exchCode": "NEW YORK"}]'
+nghtstr
+comment created time in 2 months
+
+ issue commentOpenFIGI/api-examples
+
+Unable to send multiple types of the same parameter to /v2/search and /v2/filter
+
+From the documentation of the mapping endpoint: "The request should be an Array of Objects (or Mapping Jobs), e.g. [{...}, {...}, ...], where each Object has the following properties:..."
+
+So, you only need one API call, but you provide a list of query jobs. Something like this will work:
+
+curl 'https://api.openfigi.com/v2/mapping' \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --data '[{"idType": "BASE_TICKER","idValue": "IBM", "securityType2": "Common Stock", "exchCode": "NEW YORK"},
+        {"idType":"BASE_TICKER", "idValue": "IBM", "securityType2":"Preferred Stock"},
+        {"idType":"BASE_TICKER", "idValue": "IBM", "securityType2":"Corp", "exchCode": "NEW YORK"}]'
+nghtstr
+comment created time in 2 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+Thanks. Any in case anyone looks at this later, the deserializer isn't a list. It should be:
+
+var jsonData = JsonSerializer.Deserialize<OpenFIGISecurity>(webResponse); // Deserialize the web response Console.WriteLine(jsonData.data[0].name);
+
+convergenceIM
+comment created time in 3 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+[{"query":"IBM","exchCode":"US"}] => {"query":"IBM","exchCode":"US"} should make it work
+
+convergenceIM
+comment created time in 3 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+search api support only single object, mapping api support Array, that's why it works for mapping not for search, @Panache1
+
+// THIS RETURNS 400 Bad Request var webResponse = webClient.UploadData("https://api.openfigi.com/v2/search", Encoding.GetEncoding("UTF-8").GetBytes("[{"query":"IBM","exchCode":"US"}]")); // Post the search information as a byte array to the API
+
+convergenceIM
+comment created time in 3 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+Here's my full code in C#: `using System.Collections.Generic; using System; using System.Text; using System.Net; using System.Text.Json;
+
+namespace OpenFIGISearchTest { class Program { static void Main(string[] args) { using (WebClient webClient = new WebClient()) { webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+            // THIS WORKS
+            //var webResponse = webClient.UploadData("https://api.openfigi.com/v2/mapping", Encoding.GetEncoding("UTF-8").GetBytes("[{\"idType\":\"TICKER\",\"idValue\":\"IBM\",\"exchCode\":\"US\"}]")); // Post the mapping information as a byte array to the API
+
+            // THIS RETURNS 400 Bad Request
+            var webResponse = webClient.UploadData("https://api.openfigi.com/v2/search", Encoding.GetEncoding("UTF-8").GetBytes("[{\"query\":\"IBM\",\"exchCode\":\"US\"}]")); // Post the mapping information as a byte array to the API
+            var jsonData = JsonSerializer.Deserialize<List<OpenFIGISecurity>>(webResponse); // Deserialize the web response
+            Console.WriteLine(jsonData[0].data[0].name);
+        }
+    }
+}
+public class FIGIData {
+    public string figi { get; set; }
+    public string name { get; set; }
+    public string ticker { get; set; }
+    public string exchCode { get; set; }
+    public string compositeFIGI { get; set; }
+    public string uniqueID { get; set; }
+    public string securityType { get; set; }
+    public string marketSector { get; set; }
+    public string shareClassFIGI { get; set; }
+    public string uniqueIDFutOpt { get; set; }
+    public string securityType2 { get; set; }
+    public string securityDescription { get; set; }
+}
+public class OpenFIGISecurity {
+    public List<FIGIData> data { get; set; }
+}
+}`
+
+convergenceIM
+comment created time in 3 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+Below is the code I used
+
+import http.client
+
+conn = http.client.HTTPSConnection("api.openfigi.com")
+
+payload = "{\"query\": \"IBM\", \"exchCode\": \"US\"}"
+
+headers = { 'Content-Type': "application/json" }
+
+conn.request("POST", "/v2/search", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+convergenceIM
+comment created time in 3 months
+
+issue closedOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+I'm new to the API so apologies for the basic question. I would like to try the search endpoint working and cannot find any example code in this repo or elsewhere online. I had assumed this would just require changing the openfigi_url = line to look like openfigi_url = 'https://api.openfigi.com/v2/search' but that throws an HTTP Error 400: Bad Request message.
+
+How should I use this endpoint? Related, does the search method look inside of all fields or only the ticker field? The example on the openfigi project page only shows matches on ticker.
+
+closed time in 3 months
+
+convergenceIM
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+more information needed, query with jayflo's example does work for me. please reopen this ticket with complete example code.
+
+convergenceIM
+comment created time in 3 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+I'm checking, will get back to this ticket
+
+convergenceIM
+comment created time in 3 months
+
+ issue commentOpenFIGI/api-examples
+
+Help using the v2/search endpoint
+
+jayflo's example doesn't work for me either. I also get the 400 error.
+
+convergenceIM
+comment created time in 3 months
