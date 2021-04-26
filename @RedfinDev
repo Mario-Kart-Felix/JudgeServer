@@ -1,0 +1,23 @@
+We use cookies and similar technologies to give you a better experience, improve performance, analyze traffic, and to personalize content. By continuing to browse this website you agree to the use of cookies. For more information on how this website uses cookies, please select “Privacy Policy.” To opt-out of cookies, please select “More Information.”Accept Cookies More Information
+Privacy Policy | Powered by: @RedfinDev
+Update of Purchase Order
+Use
+If the user changes the sales order in SAP CRM, the purchase order ( PO ) is updated.
+
+When a sales order is changed in SAP CRM, a distinction is made between:
+
+Changes before the PO is created
+
+Changes after the PO has been created
+
+Changes beforePOcreation
+If the PO has not yet been released, any type of change is possible. You can, for example, change the source of supply, switch an item from an external vendor/supplier to an in-house location, or vice versa. In addition, backorder processing (BOP) that is run in SAP SCM can cause changes to a third-party item (provided that it results from rules-based ATP).
+
+Changes afterPOcreation
+If the PO has already been released and created in the ERP system, changes from a sourcing procedure or a BOP run are prohibited. You can, however, still make manual changes.
+
+If SAP SPM receives a PO confirmation, it validates the confirmation received from the vendor/supplier and updates the purchase order with the new data for the delivery date and quantity.
+
+The following figure illustrates the process flow and system communication:
+
+This graphic is explained in the accompanying text.
