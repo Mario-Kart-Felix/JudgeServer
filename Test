@@ -1,0 +1,81 @@
+What is unit testing in JS?
+JavaScript unit testing is no different than unit testing in any other language: writing tests to assert that your code does what you intend it to do, in a variety of cases. The rule of thumb for software testing is: If it has logic (that we wrote ourselves), it needs tests.
+
+For any application with a web experience, JavaScript is going to be a part of that application in some way. Even if you believe your business logic is “mostly” on the backend, it’ll be remiss to skip having any test infrastructure for your JavaScript codebase.
+
+Unit tests make refactoring easier and ensure code quality -- it’s much easier to update code with confidence when you have tests to validate application behavior, or to write a test to programmatically validate that you fixed a bug.
+
+ 
+
+Top JavaScript Testing Tools
+ 
+Jest 
+Jest is a JavaScript testing framework that promotes itself as zero config, parallelized tests, with features like snapshots to make saving large diffs a breeze. Jest is maintained by Facebook, and was originally associated with testing for ReactJS users. Jest has a lot of features built-in, and works well with not only React, but Vue, Angular, Node.js, TypeScript projects and more.
+
+Getting started writing unit tests with Jest usually requires zero configuration, and is easily installed with npm:
+
+npm install --save-dev jest
+Writing a test file and making Jest aware of it is as easy as naming the file “NAME.test.js” (the .test.js ending will be picked up by Jest). Jest’s API uses common verbs and nouns seen in unit testing, and a test in your sum.test.js file could look like this:
+
+test('adds 1 + 2 to equal 3', () => {
+
+  expect(sum(1, 2)).toBe(3);
+
+});
+Other verbiage such as using “describe” to group tests and using “it” rather than “test” work with Jest out of the box, if you prefer a style like:
+
+describe("an area of code", () => {
+
+  it("does what I expect", () => {
+
+	expect(true).toBeTruthy();
+
+  });
+
+});
+Jest is by far the leader in JavaScript unit testing these days -- and it is easy to migrate to Jest from nearly any other framework, as it’ll work “as-is” with Jasmine and code-mods are available for migration from other tools.
+
+ 
+
+Jasmine
+Jest builds on the body of work laid by Jasmine, which uses a behavior-driven development taxonomy where you describe a test suite, make it … should (or expect … to) expectations.
+
+Jasmine has many packages to work in other environments, such as Jasmine for Ruby or Jasmine for Python, or even an in-browser test runner.
+
+The standalone distributions of Jasmine can be run in a browser (via an HTML page that loads your scripts, the test runner and your test scripts), so this could be a great option if you’re working with unit testing in JavaScript, but don’t have an npm/Node.js environment setup.
+
+A simple Jasmine test goes something like this:
+
+describe(“My wonderful function”, function() {
+
+   it(“should be very cool”, function() {
+
+       expect(myfunction()).toEqual(“cool”);
+
+   });
+
+});
+Jasmine is flexible across various tools and test runners, and the describe format for tests makes them easy to read (assuming you write them well!).
+
+ 
+
+AVA
+AVA is a test runner for Node.js and JavaScript in general that is minimal, fast, and has nicely opinionated output, highlighting diffs when tests do fail. A test with AVA has a somewhat different format than Jest or Jasmine:
+
+const test = require('ava');
+
+test('a is not b', t => {
+
+    t.is("a", "b"); // This test will fail
+
+});
+AVA calls its specialized diff the “magic assert” and it can be very helpful when reading test output:
+
+JavaScript Unit Testing with AVA example
+ 
+Other testing tools
+There are plenty of JavaScript testing frameworks and tools besides these popular options, with a notable mention for tape (which emphasizes the TAP “Test Anything Protocol”). There’s also the DOM Testing Library, which is not a test runner or testing framework, but a useful tool when writing tests for web UIs with a variety of frameworks (or no framework).
+
+For JavaScript testing beyond unit testing, integration testing and end-to-end testing in JavaScript have quite a few intriguing tools for how to test your code beyond unit testing, beyond the usual Selenium suggestions. For example, QA Wolf will create Jest/Playwright test code from you using your browser on your app!
+
+Hopefully these highlighted tools help you get going with JavaScript unit testing. If we want to ensure code quality on the client-side, we need to be rigorous on bringing best practices for code quality along. Luckily, there are plenty of well-vetted tools available to do JavaScript unit testing.
