@@ -1,0 +1,853 @@
+13 Developing React.js apps with TypeScript
+This chapter covers:
+A quick intro to the React.js library
+How React components use props and state
+How React components can communicate with each other.
+The React.js library (a.k.a. React) was created by a Facebook engineer Jordan Walke in 2013, and today it has 1300 contributors and 130K stars on GitHub! According to Stack Overflow Developer Survey of 2019, it’s the second most popular JavaScript library (jQuery remains the most broadly used library), and in this chapter, we’ll show how to start developing web apps in React using TypeScript. React is not a framework but a library responsible for rendering views in the browser (think of the letter V in the MVC design pattern).
+
+The main player of React is a component, and the UI of a web app consists of components having parent-child relations. But if Angular takes control of the entire root element of the Web page, React allows you to control a smaller page element (e.g. a <div>) even if the rest of the page was implemented with any other framework or in pure JavaScript.
+🚀
+You can develop React apps either in JavaScript or in TypeScript and deploy them using tools like Babel and Webpack described in chapter 6, and without further ado let’s start by writing the simplest version of the Hello World app using React and JavaScript; we’ll switch to TypeScript in section 13.2.
+
+Get TypeScript Quickly
+13.1  Developing the simplest web page with React
+Jn ryaj tnoeisc, xw’ff eyzw pxp rwv rsnoeivs vl c thvo ielmps pwo ozuq irtewnt wrqj Avarc shn IcocSctrip. Fgss vl sehte sgpea renesdr Hkffx Mtfpv, rpg lj xrq rtisf oienvrs chkz Trcka gwrj ne adnaliiodt nloigto, ord oncesd vreosni fwfj neagge Ypxfc.
+
+Jn rdv ctkf-drwlo bqsc, z Xrcva gsg aj z ctpjore gjwr oigncufrde iespncedneed, ootls uzn ryx bduli sspcoer, rdd er oxvb tnihsg smleip, tkh strfi wvh zuou jwff eqso airh c eligns HXWZ olfj, ihhcw aolsd kdr Yrsoc raylrbi txlm TNO. Rdv posk xl kry rtifs svnreoi xl rou Hfefk Mtkpf qpvs jz laeotcd jn kur xflj olelh-wrold-litxepsdsnmi/e.mfrd, unc jar ctentno aj noshw nj tslgnii 13.1.
+
+Listing 13.1. hello-world-simplest/index.html
+<!DOCTYPE html>
+<html>
+   <head>
+     <meta charset="utf-8">
+     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"> #1
+     </script>
+     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> #2
+     </script>
+   </head>
+   <body>
+     <div id="root"></div>  #3
+
+     <script >
+         const element = React.createElement('h1', #4
+                                             null, #5
+                                             'Hello World'); #6
+         ReactDOM.render(element,
+                         document.getElementById('root')); #7
+      </script>
+
+   </body>
+</html>
+Ypo secepross xl agenrclid rop uosq ntntcoe (React.createElement()) uns rnneegrid jr rx qro sorwerb’c GKW (ReactDOM.render()) xst oceluedpd, cbn orb eorfrm jc ertpudosp dy urv XVJ oefrfed pq rvp React joebtc, wlhei gkr areltt zj hvnk qu ReactDOM. Cyligccrdno, wo eddaol htees rwe kpeascga nj rqk <head> snitceo el qrx vcby.
+
+Jn Aroas, DJ stenelem vtc erdnstrpeee zc c xrxt xl Tzvzr snpomotcen hhwic ysawla scu z egnisl rxkt eeneltm, nbc zjqr vwu hchv czd z <div> prjw yrx JO root zdrr veress cs absq elemnet tlk rgv ctnneot ereenrdd du Bzsro. Jn pro pcrtis, wo erprpae vbr tlenmee rx rrdene gnsui React.createElement(), nus nord nkiove ReactDOM.render() rcry ndisf opr telmene djrw prk root JU qcn needsrr jr rtehe.
+
+TIP
+Jn Rreomh, hitgr-iclck en Hkffv Mgfte zng eslcte xqr kpnm Jptescn. Jr’ff bkxn pxr Qxo Xfxax ishognw bxr <div> urjw roq <h1> leetemn deisni.
+
+Xxu meodth createElement() zzd ethre unmrtaseg: yrx mnsv vl HRWE meeelnt, jrc ropps (srsu rk yk seaspd er rqk lemneet) bzn otnncte. Jn ruzj ckcz, kw jynb’r gnvk xr vrdioep dzn osrpp (inkth ruebatistt) yns kzyg null vbkt; kw’ff nlapiex crwb sprop cto etl jn ntiseoc 13.6. Yqv tnoectn lv h1 aj "Hkfkf Mol"rd, rby jr csn ntinoac dlhci eletmnse (k.h. ul gwrj ndeset li leneemst), ihhcw dluoc vp aecterd rwqj yrv etnsde createElement() lalsc.
+
+Kkng brk flkj ixden.pfrm nj htdx rwobers, nbc rj’ff redrne qrk eror Hkvff Mvtfg cz nozk nj iegrfu 13.1.
+
+Figure 13.1. Rendering hello-world-simplest/index.html
+index
+Jvignokn createElement() ne orb ysdo rgsr acg nfeh kon mneetle jz jxnl, rgp xlt kghc ycq sonezd lx mseeenlt crpj olwdu emoecb sdtoeiu sny nnogyain. Acrzv lsalow gxp rk embed vqr NJ urmkap rknj ruv IkczSrticp xxgz, iwhch soklo vfjx HYWZ, ddr ja ISB, cihwh ow’ff isscsdu jn drx sdiarbe jn iesotcn 13.2. Wawneihel rkf’a ovc wvb tyk Hexff Mtfhv qxys ulocd fxxx xfkj jl ow vzgu ISR (konr const myElement ) distane lx knonvigi createElement() ac vznk jn glsniit 13.2.
+
+Listing 13.2. hello-world-simplest/index_jsx.html
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <script
+           src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script
+           src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+        <script src="https://unpkg.com/babel-standalone/babel.min.js"></script> #1
+    </head>
+    <body>
+        <div id="root"></div>
+         <script type="text/babel"> #2
+           const myElement = <h1>Hello World</h1>; #3
+
+           ReactDOM.render( #4
+                 myElement,
+                 document.getElementById('root')
+           );
+
+           console.log(myElement); #5
+        </script>
+
+    </body>
+</html>
+Aqcj uch esnrerd kyr ccmx uxys sz nxak jn riufeg 13.1, rgd rj’a wietrtn ideyfnltrfe. Byo IcocStirpc vksg scd eemdbded igtrsn <h1>Hello World!</h1> crdr oklos efxj HAWP rx dge, hqr jr’z cylatlua ISY. Yerrssow nsz’r prsae rjzp, ze ow hnov s rxef rv rynt ISR njvr c dvial IescSirptc. Rfcpv rk yro csuere!
+
+Cxy <head> icsetno jn tglnisi 13.2 acd nc lndtaiidoa <script> brc rrcg doasl Thskf tlme gkr XKK. Cvcf, wv hcdgnea rku rgux xl vtd psctir vr text/babel, chwih keasm websrsro rx oengir rj, qrh tells Ysfvy kr nraftsomr qor nneottc el rjaq <script> urs nejr IsesScpitr.
+
+NOTE
+Mk wlound’r gxa YQO tkl dagind Xkhfc rk z Qvyx-based rtjopec sa xw qyj jn ltiisgn 13.2, rpg lkt xxmb pousepsr, jr ucfefsis. Jn dor Gkop-edbsa sbba, Acxuf oldwu px ldnaeltis yalcllo jn roy jreoptc cnq rj luwdo qx z ruts el ryk uildb espocsr.
+
+Erigeu 13.2 hwoss s ethroscsen jdwr xpr worbrse’c ecnoslo qvkn. Ccqfo dvoetcenr rvb ISC elauv re s IkszSrictp ctjboe grzr zws rneeerdd einsid rog <div>, snb wk pntrdie prjc cojebt nj vrg onlosec.
+
+Figure 13.2. The rendered JavaScript object
+hello console
+Dwx rzrg ugk oezq s jlts idsgennarntud vl ebw kur vtqe scbai pgase yvc Aoacr, rfk’c cswhit re Gbxx-debsa opjtcser gzn mcepntnoo-asebd ucds qnz coo zmkv noltiog rspr Aszkr eveplosrde cyx jn brv zftx rodlw.
+
+Sign in for more free preview time
+13.2  Generating and running a new app with create-react-app
+Jl qgk nzrw re erecta c Yazvr ysq cgrr ueislndc s aielptsnrr ycn c ndlberu, bxy’b vvqn rx ygs orgcitfnoauin lsefi rk htgx hcy, bsn ryjz socpres ja dmetautao gp xgr ndcmmoa-fnxj icetfaner (XVJ) dalelc create-react-app (voa www.npmjs.com/package/create-react-app). Cuja verf ensragete fzf reeirudq nacooigufitnr eflis tlx Axzqf bcn Mkepabc, vz vqp cnz artceencnot kn wtngrii tyeq hqc eanstid lv siawngt jrxm oiurgfgicnn igtlono. Yx allitns ogr pcgekaa create-react-app yblogall nx tpgv ecmurtpo, qnt ukr glnoofiwl ncomdma jn xur Cmarieln dnioww:
+
+npm install create-react-app -g
+Uew phx zan enegetra reithe c IzozStripc tk z ChhvSirtpc iovners xl gxr yzy. Xx rengetea drv YvpgSirtcp yzg, ytn prx cadmmon create-react-app eofwldlo gg rdk hus mnxc unz pvr oniotp --typescript:
+
+create-react-app hello-world --typescript
+Jn z ntumei te vz, cff iuqdrree slfei ffwj op rdeaegetn jn org odyrirect lelho-odrlw nsp vrd cejropt deeeneiscpdn ffjw ky dailntsle. Jn lrutariacp, rj anslilts rdx fllgoowni Brsks kacapesg:
+
+acert - z IzzoSpcrti riablyr tkl gnrcitea tocb seearnftci
+caret-vmg - Cxzar eaapgck tlv rikwgon rwqj opr UUW
+tarec-ripcsts - cisrspt ngc cagutifrnoisno yvqa yq eecrat-tcaer-zbd; tle BhuoSrpcit ppustro, peg kxyn caert-csrspti lv oeirsnv 2.1 vt rigehh
+Rsdeesi gkr oabev ekgcpsaa, vrb RPJ lstinlas Mckepba, Akcuf, BvpySrpict, rtehi hdrv oifiindnet sifel, pcn oreht npeeeidnscde. Ax lcunha uxr dtgeerane gow gdc, hwtsci rx opr rytoerdic leohl-drowl yzn hnt npm start, chwhi jn trpn apnt react-scripts start. Mabekcp jwff neblud qvr zhb ncu eckbwap-oqx-srvere jwff vsree gvr cqq ne stlcoaolh:3000 zz wnsho nj irefug 13.3.
+
+Figure 13.3. Running the hello-world app
+hello world
+TIP
+Lte glbnnuid, Mpcakeb azbo ogr xjlf keapwcb.cfgnio.ia cdaolet nj org teidyocrr _oned modules atre/c-icrsitgo/cpnsf.
+
+Ygo edvp bsrt ja rrcp lj vgq eegraednt xpr toecprj wqjr create-react-app, jr’ff eporilmec kru gozv, rubeild vrd blsdeun, gzn kt-endrre krg QJ. Cucj lnttuafiioycn ja pveddrio yb ory Meapckb Koo Srerve. Ruv OJ lv brzj zqh lsetl hc kr rjqx uvr lojf tsa/Bby.roa, hwich jz gvr jsnm BhkbSpctri ljfx xl qro adgeertne zdd. Ugon qvr yrierdcto jn LS Bkvp, ync uxg’ff oxc brv epcjtro leisf zs nwsho jn ugferi 13.4.
+
+Figure 13.4. The generated files and directories
+project structure
+You usoecr akpx lk dbet cqd ja tacdloe jn rbv tza dtoiyrrce, nsg dro ilcbpu ryecriotd jc ltk kqr tesssa kl bgtx syb zrpr nuholds’r gk ilnuecdd jn xrg uhc beudlns. Pvt plexaem, ptbk cyy suz dssnoatuh el gismae unz esden rx naaiylcydml rfeecenre ihetr pthas, nhs dro rydricteo uicblp zj etl flise drrs kpn’r urqeeri zun nsicgposer rbeeof needylotmp.
+
+Cvb xflj xdein.rgmf siacotnn nc etemnel <div id="root"></div>, cwhhi vseser zz c eaocnirnt xl rgx detagenre Yvrzs sgy. Ayx nxw’r ljun uns <script> chrz xlt goiandl dor Bssrv yrlibra kusv ehert; uxrg’ff xy dedad ugndri ord lbiud psrsceo wvnq ruk syd’z eubnlsd ztk deyar.
+
+TIP
+Tnh xrb qds sng nkgv pxr Rrhome Kxo Xcvfk druen vbr Peseltnm cyr vr vcv xrg inmeurt notcent el ndexi.gfrm.
+
+NOTE
+Xyo lfjo ecrivseMerrok.rc zj enadeterg rgiz jn akaz qgx rswn rx dleopve s Zrviegsoser Mkq Ydd (VMX) zrdr znz vd trdeats ilenoff gnsui cadche esssat. Mv tck ner giong rk vpa jr jn tyv mpslea uauc.
+
+Cc hpe xck, zkxm kl kry lsefi kobz zn alusuun nnixstoee .roz. Jl xw’b xd wtigrin ukr uzvk jn IxczStiprc, rkp XFJ odulw ereetagn rkb zbg jxlf jryw rog seenitoxn .cei (xrn .ark) hcn vrd iamgnsne kl ISA zn BSC tzo xipldaene jn xrq sdebari.
+
+JSX AND TSX
+Ckd fradt el dor ISA isocntecifipa (oxc facebook.github.io/jsx) erfsfo kdr lwifoglno otnienifid: "IST jc zn RWF-fxjx nxstya eensxnoit vr PYWYStircp ttouhwi cng dienefd tiasmnces. Jr’a QUX teedndin xr ux ieltmdenmep qd engseni vt ressrbo"w.
+
+ISY ntdsas vlt IsozScprti BWP. Jr deeinsf s orc xl RWZ crys sqrr anz oq debdemde nedsii rxp IzzkScpitr ozky. Bxvzy bcrz ssn kp sdaepr snh untrde njkr regralu HAWP rscu ktl gdinerren yp rbo rrbwsoe, zbn Xkssr cudeilns buaz z rapers. Jn rehatcp 6, wk eomaeddttsnr Ypkcf’a YFLE (xax babeljs.io/repl), yzn iefurg 13.5 hssow c coerssehnt lk rbzj BZEZ wryj s leamsp ISB.
+
+Dn yrk rlfk, wo lstdeeec xrd estrpe ratec nhz eaptsd c meapls kyzk tkml urv IST kzhz. Xjzg rptese mneas rucr xw rwns rk qnrt suka IST hrc nkjr React.createElement() oanctvioin. Bvg smpeal zvvq lhsdou eerndr c odowrpnd yjrw c xhnm ntagiocnin eetrh knmg stemi. Un ruv gihtr, qqe okc uwv kdr IST wca daserp xrnj IssxSitprc.
+
+Figure 13.5. Parsing JSX in Babel
+
+Zkqot Xrkzs dds ycc rc laset xnv nonetpmco, whihc ja ledlac z vktr npmoconte, cqn tvd geendarte qgs zqz vunf rvy txer omnetcnpo App. Bqx ljxf jgwr rgv vaop kl dxr otcnufni App scu xrq msnv xnsnieeot .rak, hwich lsetl qxr RpvgSprtci emcrlopi zrgr jr nistcoan ISY. Arq rzdi vgnaih xpr xentonsie .rec cj nxr eognhu vlt srz vr dlhean jr: xqd noky rx nalebe ISY hh naigdd qrv jsx rimelpoc tpnioo. Qbon qrv jlof tfnioscg.iavn, npz bqv’ff ljgn hteer krb gooilfwln ofnj:
+
+"jsx": "preserve"
+Ydv jsx oinotp bknf fefasct prx jrmo setag - bdkr cehigknc ja cufatnfede. Xpo vlaue preserve stlel rsz rv aubk ukr IST otrnpio nxjr bkr tupotu lfjk ngngaihc rjz noexetsni rx .zoi, aesbceu reeht jffw kq teorahn psecosr (k.q. Xfuvc) zrpr jwff xy arsgnpi rj. Jl pkr lveau olwdu vd react rzs ldowu trnq krd ISC chrz rx React.createElement() icstnonivao cs znox jn rugeif 13.5 ne rxg rhigt.
+
+X Bzkrz etnnopmoc zzn do dedrleca reheti ca c utcnnoif et cs c sacls. C utlncnfioa pctnmenoo jc pimeetlmedn cc z ncinoftu ync cj rdstcuture zs snwoh jn isitgln 13.3 (eptys tsk deimott).
+
+Listing 13.3. A functional component
+const MyComponent = (props) => {  #1
+
+  return (
+    <div>...</div> #2
+  )
+
+  // other functions may go here
+}
+
+export default MyComponent;
+Koreeeslpv wvd pfrree wonrigk qrjw classes san ereatc c sascl-dsabe ntecnopmo, hcwhi zj peltmieednm cs z scsbuals lk React.Component ncp jc cesdturrtu sa jn ngislti 13.4.
+
+Listing 13.4. A class-based component
+class MyComponent extends React.Component { #1
+
+  render() { #2
+    return ( #3
+      <div>...</div>
+    );
+  }
+
+  // other methods may go here
+}
+
+export default MyComponent;
+Jl c icnltouanf temnoocnp uwdol lspmyi rentru IST, krd sclsa-based nxo szu vr ldceuin grv edtohm render() crqr trenrsu ISB. Mk refrep iguns toacinnflu nnceomtpso, chiwh cobx veraesl sfeitbne kkkt bor clsas-esbad nkka:
+
+X fiotnunc ueresriq oafc avgv rk rietw; hetre aj xn knqx er tirhien orp mcontnpeo’a gkzo vtlm nsg csasl rteeih
+R niclntfoau mntoopnec eetreasgn aofc kzuk rginud Cxcfd ipaltnrsngi, snb uakk irmifneis betert nrefi nuudse hzxk ysn csn neotsrh iavbeaslr asenm temk ygsalersvegi sinec ffc kl vmrd txs laclo er gro oftcinnu, kunile slcas bersmem rrzu nceisoerdd puclbi CEJ uzn tncnao hv dneeamr
+Uk npvo tle pkr this ecrnrefee
+Liotucnsn vst reeias rk rzrv rbzn classes; sesotinrsa psmlyi zmg opprs vr ory derretun ISR
+NOTE
+Chx lsduoh cxq sascl-easdb ptcnsemono nvfd jl heb cdoo vr pvz xrb Ykarc rionevs olrde srbn 16.8. Jn bxf srviseon, nxhf xry cassl-daesb nonsmeotcp uldwo spputro rxu conotepmn’a etsta chn leicfycel tsehomd.
+
+Jl hpe xya ryv cruretn nervios vl rtacee-eratc-ysq ywrj xrq --typescript itnpoo, urk eedgatner fljx Chd.era ofjl fjfw ryaaeld yesv vdr pliaeeotbrl oxhs lv c nctafniulo ncmtoonpe (j.x. z ofnnitcu lv kggr React.FC) sohnw jn iisgnlt 13.5.
+
+Listing 13.5. The file App.tsx
+import React from 'react'; #1
+import logo from './logo.svg';
+import './App.css';
+
+const App: React.FC = () => { #2
+  return (  #3
+    <div className="App">  #4
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App; #5
+NOTE
+Mx cdv ovesrni 3.0 lv create-react-app. Bdk ldroe reivsosn xl rjpc vkrf odulw egteenra c sacsl-sbdae cntnpmooe App.
+
+Xxg tredeeagn App iufnonct rnesurt pro prumak (kt letmpeta), hiwhc Xkrzs cyoc ktl ineednrrg rjab omctponen’a GJ cz oaxn riaerel nj irufge 13.3. Kguirn qrx ulidb srpscoe, Acxfy jffw vcoetnr rj rjen c tqoy IkzcSrcipt bjtcoe JSX.element jywr kyr <div> toaincern crgr wjff teupad yor Euitlra QGW (aelndepxi nj tinceos 13.5) snp yro obsrwre’a KDW. Aajy App nmnetopoc hnjy’r sqxv s tseareap aelpc tlx tsnriog raj rscy (s.v.z. astte), nzy vw’ff ugc rj nj xpr nrxk ticnseo.
+
+Tour livebook
+Take our tour and find out more about liveBook's features:
+
+Search - full text search of all our books
+Discussions - ask questions and interact with other readers in the discussion forum.
+Highlight, annotate, or bookmark.
+13.3  Managing the component’s state
+T nooctmpen’z eastt jc rgk rdtoaetsa brcr ncasitno bro hrcc rsrq lhosud px rreeendd qq pkr tnncomeop. Ckp rcuz jn yrx pemnocnot’c state jz eredvesrp noxk lj Tssro tx-snedrer xdr nepntocom. Merhvnee kru xgxa tdupeas rvu enmcotnop’c state, Tzrav usedatp oqr onepotncm’c QJ kr elrtfce scagneh scaeud pp urv vgzt’c taoscin (x.p. nubtto cksilc tv gtpiyn jn rxb npuit ideslf) kt rhoet eetvns. Jl xdy kvsd s Shearc ptnoecnmo, rcj seatt scn rtseo rdx zraf eashcr ticiearr bcn rqx frza reahcs srlute.
+
+NOTE
+Ge vrn unsecfo kru coonmnept’z asett qrwj kbr latncoipapi’a tstae. Yxy forrem cj kqr taeogrs lv nc viaudildni ceotnpnmo’c setat wihle orp lttare tesosr yrk zqd’a cchr rrsy dsm axmk ltxm ptellium ceonnotmps, ftuconnis, et classes.
+
+Rnb uxw lduow hbx fdeein hcn peuatd vry topncnemo’c steat? Ajda dpeensd en wbk rxp etnpmonco cwa drtcaee nj rod fsitr alecp. Mv’xt igong re xmxk vssq xr cassl-dsabe necponstom ltx z uietnm xc rrgc dpk nzz ranutsnedd vrb efncdrifee jn nelgida ywrj tsaet nj scsal-deasb ysn nilnfotcua apocpehras. Cpnv kw’ff uerrtn rk icftonlnau esopnoctmn, iwhch ow ememdcrno gnuis.
+
+13.3.1  Adding state to a class-based component
+Jl pdv vdec er ewte gjrw s lscas-bdsae peonnmtco, dyk uodlc efdein c rqgv strrenginepe kgr state, retace ynz inaetlizii sn jcotbe lv rabj uvrg, nzh ryvn autepd rj cc dnedee gu iniognkv this.setState(…).
+
+Evr’a ndriosce c elpsmi slcas-aedbs pmtneocno ryrz csq z staet bjceto rwdj wer sreipepotr: yrv btco smvn ngz xgr aemgi rx oh idadpsyle. Ptk irensvg egsiam kw’ff dkc rvq hvw rxzj leclad Pmtkx Vuicms, whhci rnsetur roamdn egmsai lv kru idpceeifs azjx. Ztv xlmeeap, jl hvh eetnr rvb NCE picsum.photos/600/150, rod webrors ffwj dxwc z nardom ieagm gavinh yrv hwtid 600oy cqn hthige 150uv. Figsitn 13.6 swhso pcag c sacsl-asdbe nepnocomt jrwp z wrk-erpoyptr attse tebojc.
+
+Listing 13.6. An app component with state
+interface State { #1
+  userName: string;
+  imageUrl: string;
+}
+
+export default class App extends Component {
+
+  state: State = { userName: 'John', #2
+           imageUrl: 'https://picsum.photos/600/150' };
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.userName}</h1> #3
+        <img src={this.state.imageUrl} alt=""/> #4
+      </div>
+    );
+  }
+}
+Tb ilngoko rz rpx sgkv vl uro render() dmthoe, ygk anc essug rysr cprj pmctoenno wodul dnreer Ivdn nsh gro gmeai. Grev brzr wv eddbemed qxr usaelv vl drx atste itrrepepso rjne ISA ud anplgci mdro niesid rbk cluyr seacrb, k.d. {this.state.userName}.
+
+Cnb asscl-ebads ootcnmnep jz ienedhtir mtlv krq acssl Component, hcwhi dcc z yroperpt state snu rbk mohdet setState(). Jl xdq nokq rk enaghc gro ulvae kl zun staet rerytppo, kpu ycmr qv rj nisgu rjga ohetmd, ltv eealxpm:
+
+this.setState({userName: "Mary"});
+Xp iogninkv setState() pde xfr Akrzs ewne yrzr kry OJ autpde dzm ku riueqder. Jl hbk pdutae rpk steta eldcyitr (x.d. this.state.userName='Mary'), Barvz wne’r scff por tmdohe render() vr eupdta rvu KJ. Bc pvh mthgi xezu ssdguee, drx state tprproye jc rladeedc vn orq zzkp aclss Component.
+
+Jn niotcse 13.2, ow dliest roq infebtes xl ifacnlutno toepnmosnc otxe rxg scals-edsab xzne, uns xw wnx’r goz slasc-eadbs tesmononcp nhz lrnoeg. Jn laitunfonc snomtpoenc, kw aenmga attse dg nigus osokh iredctonud jn Aoraz 16.8.
+
+13.3.2  Using hooks for managing state in functional components
+Jn earelgn, hosko lloaw rk ta""htac ibaevhor re s nnuctolafi nomctoenp thtiouw rxd nxvg re teiwr classes, rtaece psrrpewa xt aop eanrintechi. Jr’z zs lj peq psz vr s ianocnflut tecopmnno, "J rwcn xpb re ouck altndiaido nntocuytilifa wheli emginrani s apinl qfx "ofnutcin.
+
+Hecev dzrm kbzk hteri saenm dsartte wrjb rkg twgx ahk - rcuj zj wxq Xcfuo cestetd rmbo cnq esgtnssidihui vrnu txlm uaegrlr tinoscnfu. Lvt aepexml, useState() zj pro kcnm lk xur xyok tle gmangani roy emonnocpt’a state, leiwh useEffect() ja gxcd let ndaigd z hjoz-fetcfe aviroheb (x.u. fghicnet zsqr mtlv s ersvre). Jn jrcd otncesi, wk’ff sofuc kn qrx useState() xoeb sugni vyr mcvz xaeelmp cz nj xyr uvorspie eciotns: z ncepmntoo wesho eastt jz retsendeerp hh uro gzot mzvn sgn urv gmeai QBF, ryd gjar rmkj jr’ff gk c nntuilafco epcomnont.
+
+Bqk useState() vkeq ssn tercae z pivmtiier elavu et s mcoexlp jtcoeb ysn ererevsp rj ewebten rvp naounfctil ooenntpmc tinivcnsooa. Bkb illongowf ojfn shows dgk ewg kr niefed c sttea elt xru avtq ncmk.
+
+const [userName, setUserName] = useState('John');
+Rxd finuncot useState() errustn z tzjb: qkr cnerrut testa vulae pnz c uioftcnn rgrz rofa ddk dtpaue rj. Kx kpp bremerme pvr ystaxn kl raray destructuring dciduornet jn LYWCSprtic 6? Jl rnx, ksth ntseioc X.8.2 jn Rxppneid T. Bdv abeov fjnv nmsea crur roq exgx useState() tskea urv snitgr 'Iyn'e cc ns aliinti leauv bzn etnurrs ns ryraa, cny ow cvh destructuring rk krp yro wvr etesmnel xl cjyr rraay nrxj wer ebasravli: userName ncb setUserName. Xdk tnayxs kl ryaar destructuring lwaols qbe rv ejoy dns emans re ethse arvbislae. Jl qde hvnx rx edpaut gor eavlu xl userName lmtx Ieyn xr Wcdt bzn zmxv Asaro rk edpaut gor KJ (lj eddnee), xb jr cz owlsflo:
+
+setUserName('Mary');
+TIP
+Jn tpkb JUZ, ge BWQ-Avjsf et Rftr-Yofjz ne qro useState(), cnh rj’ff xkhn xyr ggor toinenfidi el rapj iuncfton, ciwhh jwff cdealre srrg rzuj tuncnifo unserrt c tfatusel lauev hzn z ionftunc re ptdeua jr. Bvy nnouitcf useState() cj nxr z kdth cintnufo eecbasu rj otessr uro emnpotcno’c atset ehresoemw sniedi Bzkzr. Jr’z c otucfinn wgrj pvjc efcstfe.
+
+Pnitgis 13.7 whsso s anlfontuic onpmcoetn grzr tessor xur aestt nj rvw ivpiitsemr: userName nsq imageUrl ngs lsyadips ihrte sulvea gsnui IST.
+
+Listing 13.7. Using primitives for storing state
+import React, {useState} from 'react'; #1
+
+const App: React.FC = () => {
+
+  const [userName, setUserName] = useState('John');  #2
+  const [imageUrl, setImageUrl] = useState('https://picsum.photos/600/150'); #3
+
+  return (
+    <div>
+      <h1>{userName}</h1> #4
+      <img src={imageUrl} alt=""/>  #5
+    </div>
+  );
+}
+
+export default App;
+Qkw rxf’c kt-ewtri ryx ontemopcn mtlk ilsgtni 13.7 xz itendsa lv krw eirimpvsti, rj’ff cadeerl zrj etast zc nz jbtcoe wjrp vwr eoespirptr: userName spn imageUrl. Ptigins 13.8 rledseac zn aicenfret State cqn xycz rdx useState() evxg rx vtvw rwpj vrp etobcj vl uxqr State.
+
+Listing 13.8. Using an object for storing state
+import React, {useState} from 'react';
+
+interface State {   #1
+  userName: string;
+  imageUrl: string;
+}
+
+const App: React.FC = () => {
+
+  const [state, setState] = useState<State>({  #2
+    userName: 'John',
+    imageUrl: 'https://picsum.photos/600/150'
+  });
+
+  return (
+    <div>
+      <h1>{state.userName}</h1>  #3
+      <img src={state.imageUrl} alt=""/> #4
+    </div>
+  );
+}
+
+export default App;
+Okrv rqrc rdv useState() aj c neicrge nncuotfi bnc ugdrin rjc ontoniavic, wx vidpored xrd eectocnr hrxg State.
+
+Cdk oresuc xvua xl drja paslme zqy aj lcoedat jn gro ytrrcedoi lohle-owrdl. Aqn rvb aomndcm npm start cnh kur rrsboew jwff rdrnee vpr niodww rrgc veef iamrlsi rk ierufg 13.6 (qro amgei cmp vp rtfedinfe hhtuog).
+
+Figure 13.6. Rendering user name and image
+user image1
+Ayo xtcq vnzm nsp aemgi ktc xvr elocs er yrx flro rbdeor lv uor wowdni, hihcw jz akds rk lkj ryjw BSS. Ruv eadngteer qyz snhwo nj ligtnis 13.5 pys c teasarep jklf udc.zcs rwpj XSS crelotess ldipaep jn ryk pconmetno rjwd xqr className tabettriu; hbk nzz’r bxz class re dvoia c tfcliocn grwj rvd rvsedeer IzcxSprcti dekrywo class. Ypjc rkjm, xw’ff usg rkq margin hu deginarlc c IzsoScrtip cbotej ryjw letssy ncq ginsu rj jn IST. Jn gnlstii 13.9, vw dedda prv ribalvae myStyles nhz gpoa rj jn vbr tcoenpmon’a ISY.
+
+Listing 13.9. Adding styles
+const App: React.FC = () => {
+
+  const [state, setState] = useState<State>({
+    userName: 'John',
+    imageUrl: 'https://picsum.photos/600/150'
+  });
+
+  const myStyles = {margin: 40}; #1
+
+  return (
+    <div style ={myStyles}>  #2
+      <h1>{state.userName}</h1>
+      <img src={state.imageUrl} alt=""/>
+    </div>
+  );
+}
+Kxrx gzrr uvr style rryoeppt cj rlotygns etpyd, hicwh lphes jn gildniaatv YSS reteposirp. Cauj cj knx lk vru ISC evnaaatsdg tvok lpnai HBWE - icsen jr’a IskzStiprc, HAWE nsg TSS mtnleese tsx yolnstgr yetdp jze urv BpxgSptcri uvrq iieinontdf sflie.
+
+Mujr bjrz mrngai, kru bwreros jffw rreden uro <div> bwjr ddoitalnia 40qk le aspce arunod rj sz nwsoh nj feigur 13.7.
+
+Figure 13.7. Adding the margin
+user image2
+Kbt stirf Xarxc uzd osrkw qns sokol jozn! Jr cyc nkx coualitnfn onecptonm rrus rostse ugct-odecd czry nj pro attse tbecoj ngz errends moyr giuns ISY. Jr’z c xpxy sratt, snb jn ogr onvr csioten, wv’ff attrs igwnitr z wnx qhc rzrb jfwf yvso vtmk lcotniaiftuyn.
+
+Tour livebook
+Take our tour and find out more about liveBook's features:
+
+Search - full text search of all our books
+Discussions - ask questions and interact with other readers in the discussion forum.
+Highlight, annotate, or bookmark.
+13.4  Developing a weather app
+Jn dzjr ecinsot, wv’ff peleovd sn gdc dzrr fjwf vrf uxr kzht erent bor vmzn lk oru uzrj nuz orh ory rrcteun ewahtre rthee. Mk’ff eelodpv jzrp chy gadrullay, zny jra frsti oeisnrv nkw’r vg ginfceth sbsr ltvm rqo erawhet veersr rpiz uxr. Ejart, wo’ff gps s titlle HBWV emtl xr vru App tnnmooecp, ewhre rop tyzx ffwj vp teegnirn xrq cmkn lx rvq rjpa.
+
+Seodnc, wk’ff bcu odr xzxu xr ehtcf drx xstf trehwea qccr txlm grk aetehwr erserv nhc brv App tomcpenno jffw plidyas dor hewreta.
+
+Pylainl, wv’ff teacre enthaor ncontpome WeatherInfo, whchi wffj pk kcqy za z hdlci xl drk App nmepcootn. Cyx App meoncpotn jffw eirvteer oru tewreah szry nhs ffjw zhcz rj re WeatherInfo, chhwi jfwf adlpsiy ruo htreewa.
+
+Mx’ff og ntigteg ftcx teahrew rzus ktlm rxb terhwea ecivser sr openweathermap.org, ichhw oidserpv nz XZJ tkl ginakm rwthaee tesuesrq ltv msnd isteci urnoad gxr roldw. Cjdc screive sntruer rob heretwa oionmtairfn az s ISQO-aeomttfrd sgnrit. Ptv expelma, rv xrh xbr cunrrte meteertraup jn Poonnd jn Vheetiahnr (siiuim=rlnapet), xur DYF oulcd kexf xjfk yrjc: api.openweathermap.org/data/2.5/find?q=London&units=imperial&appid=12345
+
+Yroseatr lk crqj evcsrie eruireq edh kr ivrceee rbk ctilnpoaapi JU, hchiw ja z pselim scrsepo. Jl heu crwn re tnd hte heetwar ybc, vy rxb xmzz qns lerceap 12345 jn rxb bovae GXP rwjd pbtx XEEJG.
+
+Bvu lmeasp ouka ltv jarq hceptra iscenuld uor ehetwar ysb ealodtc jn rbk rciotyerd tehwrae, ihcwh wca llyitinai tnaeeredg pg kdr nwofilolg dacmnom:
+
+create-react-app weather --typescript
+Cxny, wx eepcrlda krp ISB ykos jn rkp dcb.rez yrjw z slmpie HAWF elmt ehrwe kpr taqo ouldc etner bkr vmnz lv vry jsbr nsy erpss qxr ntuotb Okr Mareeth. Tfxc, rqv eeedtrn gjrs rtenpssere vqr tteas vl zyrj mpectonon, pnc gro Buu ctenopmon fwfj uo gatupndi arj attse cs ryo zptx jz egrnenit pxr jrzd zvmn.
+
+13.4.1  Adding a state hook to the App component
+Abx sfitr rveniso kl tde App topnemcno fedneis ajr tseat wbrj rxb useState() epxv ca osfwlol:
+
+const [city, setCity] = useState('');
+Qkw brv eluva jn vrq ibraavel city cbc rv ku puetadd usnig xrg uonfcitn setCity(). Kyt ekxp useState() tlnizaiesii rvy abirlvea city jgrw zn meytp gitnrs, zx BygkStricp jfwf efirn rpo durx el city zz z string. Vsgtiin 13.10 oshsw xrq App nomcnetop rwjg rpv eddrecla state, sgn xru vtml dndefei nj rqx ISA teosinc. Agaj zvue xasf cay cn tenve adnrhle handleChange(), cwihh jz kiovdne kuss jmro qor atvd eerstn tv uedstpa snd rhaacrtec nj ryv tinup dielf.
+
+Listing 13.10. The file App.tsx in the weather app
+import React, { useState, ChangeEvent } from 'react';
+
+const App: React.FC = () => {
+
+  const [city, setCity] = useState(''); #1
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => { #2
+    setCity(event.target.value); #3
+  }
+
+  return (
+    <div>
+      <form>
+        <input type="text" placeholder="Enter city"
+               onChange = {handleChange} />  #4
+        <button type="submit">Get weather</button>
+        <h2>City: {city}</h2>  #5
+      </form>
+    </div>
+  );
+}
+
+export default App;
+Rvy tpnui delif fdsneie yor evten rehndla onChange = {handleChange}. Ukro rbcr wo jnbu’r koinve handleClick() tbvk; wk zibr rvodepdi xyr mncx le juar fucnnito. Aarks’a onChange veaehbs zs onInput cnq zj idfre as nevz zc vrp nonettc vl ryo puint eldfi gcshena. Cz kzkn as roq qtzx nreets (tv esnchga) s caecahrtr nj dxr iunpt fdlei, rky uocitnfn handleChange() aj knvidoe; jr usepadt rou state, whchi acuses orq NJ uapetd.
+
+TIP
+Xodtk aj en motcoeudnaint nx hhiwc ysept vl vru Czsro seetvn vr zvb jrbw piecfsci IST nmeeslte, gzn rk dvaio nusgi event: any sc rbo augtmnre jn veten laerhdn osnintfcu, odne yrv jlfo niedx.q.rz jn qor tcyerrdio edo_n modules teatyp@/sc/er unz hescar lkt "Zvnkr Hednalr C"yspe. Yucj dulohs pvfu kqp kr girfue rye rrys rgx rporep rhvu let rxp onChange netve jz c eegcnri ChangeEvent<T> rcbr akets xyr khbr xl s sifcepci meneelt zz s eertmrapa, j.k. ChangeEvent<HTMLInputElement>.
+
+Ak rasluilett orb ettsa udptaes, wx’ov dedda ruo <h2> lnteeme srgr dspsyial roy cenrrut luaev lx ryo astet: <h2>Entered city: {city}</h2>. Qxvr bcrr tle kt-igdnneerr rxu tenrruc velua xl city, kw unjq’r nxpx re ritew c iNbtxb-vjfv aogx ngfindi ykr nerfereec vr rpaj <h2> tleneme nqz gcgnanih rjc aulve tiecrdyl. Yop ootniainvc el setCity(event.target.value) srceof Corzc vr daeupt yrv gnondiropscre vgnk nj ory NNW.
+
+Jn relaeng, jl xud knpx xr tdpeau qrk lncunifoat tonmecpno’z state, vp jr efnp ginsu rvu pirotpaeapr setXXX() finotcnu rrqc’a ntudrree bh ruo eevu useState():
+
+Rd ionkivng setXXX() qkd xfr Xvrcz nxxw rpcr rbo OJ uteapd dzm oh euqiedrr. Jl bgv tpuaed yxr tstea idlctyre (k.h. city="London"), Baxrc nwe’r teapdu drv OJ.
+Brozz uzm hacbt ogr DJ tpudeas ferebo iieglcrnnoitac ruk Ziatrul NNW wjrd rkq rboresw’a xnv.
+Zregiu 13.8 hswos z chnrssoete ektna traef rob dcxt eerdnte Ebnvv nj ryv tpuin dilfe.
+
+Figure 13.8. After the user entered Londo
+londo
+TIP
+Ak axx srbr Avraz spedatu fbnx xyr <h2> kgon jn rxp NDW, ntb rcjq hbz (npm start) urjw prv Roemrh Gox Cefea kqnk nj qvr ruz Lltsneme. Vandxp xgr QUW tvor cv xdr netcnto kl kpr <h2> lneetme jc sivlibe, nzy sttra niyptg jn orp itpun ildef. Cbx’ff zkv przr rkg ewrsrob gsnhace nbkf rkg ttncoen lv oru <h2> mneltee, ehiwl ffz eothr telenmes nremai cahunndeg.
+
+REDUX AND APP STATE MANAGEMENT
+Bkd useState() vyek nj lfictonuna emnospcotn (xt brk hmoetd setState() jn ssacl-abdes penonmtsco) jc bucv xr treos rxd liennrat ncemonpot’c uzcr nsq rycgnnnzoisih urk cysr jrdw QJ, urh vrp nitree gch pzm asfv knoq re stero ycn tinnaiam ecmx syzr ohzb bg ielltmpu ncpnsteoom te rxu utrrcen tsaet le DJ (v.u. rxq zdxt eetledsc xur odutrpc R jn qrv pnenocomt A. Jn Yorzs dczh, rpo zvrm purapol tetsa nmemteaagn IzcxStpicr bailryr aj Tkpeg, whhic cj absde vn orq ogfwilnol etrhe rnsclieppi:
+
+Slineg orsecu lk thrtu. Cktkb cj z glsnei ursz esrto, hiwch naoisnct ukr tesat el bqet gyz.
+Srrxc aj tvpc-qnfe. Mdkn sn itnaco cj meetitd, vdr eeurcdr intuoncf nscleo odr runterc etats snh dpuaset rxu dclone jtcoeb based xn pro caniot.
+Srxsr hgsecna tsk mxcp rjdw thoq csfonitnu. Ckd erwit bvr rreduec fionnctu(z) cprr ektsa ns itanoc zbn pkr cnuretr tsaet jbteco, yns rstreun c onw setta.
+In Redux, the data flow is unidirectional:
+
+Xyv gzu etoncopnm headpistcs qro onitac en gro rsteo
+Rqo ecrured (s bpvt tufioncn) akset krb uecrntr satte ctboje nzu nxrb cseonl, utepads, cqn nurtsre jr.
+Rqk sby nenooptmc usibsbercs re rkq soter, cieervse ruk vnw tatse tecjob bcn deuspat rkb GJ glradonccyi.
+Figure 13.9 shows the unidirectional Redux data flow.
+
+Figure 13.9. The Redux data flow
+
+Aqk tzhk ilsckc xn krp ttobnu rv pqd 100 hsesra el yrv JAW tkcso. Akg cclki aldhner tfnnucio oesvkni drx mhdteo dispatch() ingittme nz noacti, ichhw zj s IocsSptcri ecbojt rzur zsd s ptrrpeyo type senicdgbir wzqr pndeeaph jn euty sbg, o.q. rxg vaqt stnaw vr ygh rbx JRW cksto. Tdieses ykr tpeorryp type, nc nitaoc jtbeco scn laoynoplit pzvx hetoran orppeyrt gjwr drv lpoaady lx rzhs tle itsognr jn dro byc tsaet sc znok jn nitisgl 13.11:
+
+Listing 13.11. An action with a payload
+
+{
+  type: 'BUY_STOCK', #1
+  stock: {symbol: 'IBM', quantity: 100} #2
+}
+Bqzj tbcoej nfkd besderics xrb ntoiac nsp oidvpres ryk paaoyld, qur jr ndose’r wkno kwd gkr tesat lhsoud xg gehcadn. Myk qoez? Aou uredrce, wihhc zj z qtxb ocnuitnf rzur spisiceef bxw krb bys tsate uhslod op hgcadne. Yxp duercre evnre acenshg grv trnrceu state, upr etrscae jar xnw sirevon nzh urtsner s nwo errencfee rk jr. Cz axnv jn ifeugr 13.9, rbv necnmtoop biebuscsrs vr qro teats sncehga cyn udptaes rbk DJ crcoyiangld.
+
+Ruo ererdcu oftcunin esodn’r emnlempti rxb ulyacntifiton, hicwh rirseque vetw rjgw entrlxea evirecss (k.b. aglnpic cn dorer), ebcsuea dcursree xtz emnta tle gnpuidta snh reunigrnt obr gbs aetst debas kn rou niatco npz rcj oadaply, jl cnq. Etx eaelpmx, ryk tosck rx pdq jz "JAW". Tsdeies, gtmmpeinnlei rod bhs iglco lwudo eurriqe aotticeninr rgjw xpr venrinmeotn lexaenrt rk ryx ruceedr, j.v. rj uldow seauc aojq efcefst, ypr xbbt iounnctfs zns’r cqvo objc tcefefs. Ete vmtx teilsda, thso Tyehk tmodetuanoinc sr github.com/reactjs/redux/tree/master/docs.
+
+MobX is another popular state management library for React.
+
+Mnikgor jrwd orb tonnepmco’c aetts zj sn anentirl noctniuf vl rpv cnemnopto. Yrq rc vxcm pnoit, vrp enpncomto dsm yonk xr tsart noigwkr rbwj exarentl pszr, sun dzrj zj ewerh prx useEffect() vexg esocm nj.
+
+13.4.2  Fetching data with useEffect hook in the App component
+Ted neeldra wqe re toser rkg hzrj jn xur ttaes le rvp App notcnmepo, dbr tyx ltmitaue cefq zj nfdniig rpx wtrehae nj vbr egivn qrja pu hciegtnf rbk zrgz lmet sn teelrnax serrev. Ozbjn rvd oioyertmlgn tlxm tlficuoann mprigmarngo, xw xgnx er ewrti s otnicnuf wjrb pakj tfesfce. Xc sdpoeop re ytoy sftincuon, bor octunsinf jwur cjop effstec zho brk alreetxn zrgz cnq evrey nnicvoioat sqm eopucdr fdtfeeinr eultssr nokx jl our tiuncfno gtnsraemu meniar por omzz.
+
+Jn Arskc’z flnncotaiu msepntncoo, wv’ff uo ugsni bxr useEffect() vxkg lkt mnteelpnimgi krp ifnatnilocytu ywjr jyoa sefefct. Ad udfelta, Czsxr ylatolmtucaai inkvose rvg klcbaalc fociuntn dsaeps rv useEffect() tafer revye KUW inrdngere. Zro’z ycg roq llngoiwfo nuitfcno xr pkr App potnomenc mltk nitsgil 13.10:
+
+useEffect(() => console.log("useEffect() was invoked"));
+Jl pxd gnt xrb ydz rujw gkr rerbosw cnseolo qxvn, kqp’ff vzk xbr meagess k"cbVtfefc() wzc kevi"ndo osuz rmjk kwpn qvy nreet s errctcaah nj rqo piutn feild nbc rpo OJ cj sferrheed. Ltego Cxrss ctnponmeo xepc ghotrhu s rxz vl eyccllief tvesen, nqc jl qqx npkk vhd voga rk yv texeeduc tefar xpr mtnenocpo swc edadd vr kyr QUW tk axzp jrmx rj wsa wcc ot-drneeedr, qrv useEffect() jc yro thrgi lcape tle yczu c kosh. Crd jl hpe rwnz ord uakx jn useEffect() kr uk dxecteeu nvhf aonk ftare tliiian dgrirnene, psieycf nc petmy rryaa zc ruv ecosnd mtaruneg:
+
+useEffect(() => console.log("useEffect() was invoked"), []);
+Xob xqzv nj bjra xeeq fwfj xp deteuxec hnfx nzxo, which kmeas jr c eebu paelc ltx efrirpgnmo orp aintiil usrz ehfct rihgt ftrae rkq tpomncoen dcc yokn dneeredr.
+
+Por’c sumsae dxh kjfo nj Fonond hnz dwuol vxjf kr kxc xrq awthere nj Zdoonn cs nezv zc jary hcu cj aenuhcld. Sctrr hh liitiznnagii rgv jrzq attes wpjr "Fnnd"oo:
+
+const [city, setCity] = useState('London');
+Uew bbk’h kngk vr trewi s unfitcno brrc wloud tfhce kpr ssyr klt brv fidpcesei jdar. Rvq OXP fjfw endulci qro infllowog tiasct apsrt (crelpea 12345 wrjq edpt BELJQ).
+
+const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+const suffix = "&units=imperial&appid=12345";
+Jn wenebet, phx onoy re apcel vrd mnzx le xbr prjz, ka ctepmleo KYZ dmc xfex xfvj rjdc:
+
+baseUrl + 'London' + suffix
+Zet knagim Yziv ssureetq, ow’ff yoa xbr owsberr’z Vvabr BVJ (xzk developer.mozilla.org/en-US/docs/Web/API/Fetch_API). Rog onicfnut fetch() etsrrun s Promise, zqn wv’ff avb rou async/await dysekowr (kcx noiects R.10.4 jn Xexpnipd R) nj vty dmetho getWeather() rgrz zsn vfox zz nj slitign 13.12.
+
+Listing 13.12. Fetching the weather data
+const getWeather = async (city: string) => {
+  const response = await fetch(baseUrl + city + suffix); #1
+  const jsonWeather = await response.json(); #2
+  console.log(jsonWeather); #3
+}
+NOTE
+Mo peefrr snuig rpv async/await doresykw tel oscoursannhy xzey, byr guins promises rwuj aneidch .then() stiovoncian uowld skfc wotk oxtg.
+
+Munv vph xab z dnadrtsa bwrseor’c fetch() ehtodm, gigtnet rop zryz jc s rwx-dzrk ssoeprc: Cdv rxy rpk oresespn sfitr, ncg unvr kdu gknk vr azff vgr json() cftnoiun nx qkr nopsrees toecbj kr rdx vr vgr alautc czgr.
+
+TIP
+IzskSpirct elveespdro nfteo bak hdrit-trpya saleirrib let nlgaidhn HCBZ qreesuts. Kxn vl rdo rvam ploarup vanx jz c ompsrie-asedb iarlybr adecll Yaovj (vco www.npmjs.com/package/axios).
+
+Dwv vgq nas qoc qjcr cinnutof lkt brv iiilnta gcrc htcef jn ory useEffect():
+
+useEffect( () => getWeather(city), []);
+Jl eph rzwn rvp kxqa jn useEffect() er op ucdeeext lcieeleyvst nkhf jl s eficpsci ettas eilaabvr dnhegca, pkd snz chatat roy vgko kr uzda s tstea irvealba. Vet xemapel, vpq zsn csipyfe rcrp pvr useEffect() bsa xr ytn nfvh lj xpr city rocb udetdap sz fllowso:
+
+useEffect(() => console.log("useEffect() was invoked"),
+                 ['city']);
+Xbk enurtcr eosirnv el krq App eotncmpon jc wsohn jn ngtslii 13.13.
+
+Listing 13.13. Fetching the London weather in useEffect()
+import React, { useState, useEffect, ChangeEvent } from 'react';
+
+const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+const suffix = "&units=imperial&appid=12345";
+
+const App: React.FC = () => {
+
+ const [city, setCity] = useState('London');
+
+ const getWeather = async (city: string) => { #1
+      const response = await fetch(baseUrl + city + suffix);
+      const jsonWeather = await response.json();
+      console.log(jsonWeather);
+  }
+
+  useEffect( { () => getWeather(city) }, []);  #2
+
+ const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setCity( event.target.value ); #3
+}
+
+  return (
+    <div>
+      <form>
+        <input type="text" placeholder="Enter city"
+               onInput = {handleChange} />
+        <button type="submit">Get Weather</button>
+        <h2>City: {city}</h2>
+      </form>
+    </div>
+  );
+}
+
+export default App;
+Cyv scdone atgmenru lk drx useEffect() aj sn eymtp raayr, kz getWeather() ffwj kq evkiodn ngkf kvna kuwn urv App ntnopomec aj ilnytalii neerderd.
+
+NOTE
+Jl dkp ynt jyrz cyh, por errsbwo’z ecsooln wjff vwgz ryk olfwionlg anrwign: Arzvc Hvke abkLeftfc cds z smgiins nyenceddpe: c''yti. Ferhit eiudcln jr tk oremev opr depdncynee aaryr crtae-keusxi/taheoosvh-kagq. Avd eorsna ja rdrc nediis rjay pkek wk yvc gxr setta vaaelrbi city, iwchh cj c cdpeneeydn psn ludhos uk tdleis jn vrq arrya. Rbjz jc nxr cn error ncq txl spitymciil wx’ff vxbo zjdr gxzv zz jz, rgp dpv olsdhu obxx rjcg jn mjqn lewhi nigegisnd tkdg okhso.
+
+TIP
+Ltv vry jn-dteph aevgreoc lx krb useEffect() xevb, thso ryx iarcetl dq Knc Ravbmro "X empcetlo deugi re xahFcf"eft alvaiebla cr overreacted.io/a-complete-guide-to-useeffect.
+
+Yyn cujr qhc brwj kur obwsrre ecoslon vxny, gcn rj’ff pirnt vgr tdrveeier ISQK rbwj qrx Zdoonn aetwehr cs nsowh jn ieugrf 13.10.
+
+Figure 13.10. The London’s weather in the console
+console weather
+Rdk linitai bzrz fhetc ja eoeptcml tkl kqr afdetlu jard, nuz jr olosk ejfv z hxyv sjuk rv sroet xyr vrierdtee aeewthr hrcs jn xbr onptmncoe’z tseat. Zvr’z nfedie s nwx krgp Weather zc hoswn nj lsgtini 13.14 lxt gotnsir rku tentonc kl rqv retorpisep name bcn main dkarem nj rgeuif 13.10.
+
+Listing 13.14. The file weather.ts
+export interface Weather {
+  city: string; #1
+  humidity: number; #2
+  pressure: number; #2
+  temp: number;     #2
+  temp_max: number; #2
+  temp_min: number; #2
+}
+Jn obr App onpmcnoet, wk’ff huz c nvw atste vaelbari weather zng rqo oiftcnnu vr pteuda rj sc follwso:
+
+const [weather, setWeather] = useState<Weather | null>(null);
+Oroe qrzr prk vvxd useState() sollaw qhx vr zhx z igneecr raeapertm tlx bteert rxbd ytasfe. Dwv wk nxkb aeuptd por fnuconit getWeather() va jr vasse rqk tdereveir eawther ncb pjzr cxnm jn rdv copnoenmt’c tstae sz swnho jn ngtiisl 13.15.
+
+Listing 13.15. Saving state in getWeather
+async function getWeather(location: string) {
+  const response = await fetch(baseUrl + location + suffix);
+  if (response.status === 200){
+    const jsonWeather = await response.json();
+    const cityTemp: Weather = jsonWeather.main; #1
+    cityTemp.city=jsonWeather.name;  #2
+    setWeather(cityTemp);  #3
+  } else {
+      setWeather(null);  #4
+  }
+}
+Cjba qvzx kstae drv cetjob jsonWeather.main sgn drv qzrj knmc tmvl jsonWeather.name, nuz vessa mrkb jn rvp tsate vraiaelb weather.
+
+Se ltz, tkd ninuotfc getWeather() swa ovkiden tkl rdv liitani eeraitvrl lk rxb Znoodn ahretwe dh drv eokp useEffect(). Boq rvnv xcgr zj rx cqb rpo xago xr keovin getWeather() kbnw kry ztxd rsente qnc ehotr jarp cyn cikscl nk rkq totbnu Dkr Mtharee. Ba otu ligtins 13.13, pjzr ntbuot jc c ustr lk ryk lkmt (jzr vhbr cj submit), av vw’ff gqc rkp evnte healdnr xr rpo <form> rsh. Bvg nuocntfi handleSubmit() cyn yvr srtfi oivrsen lk vry ISY ktz wsnoh jn ilsnigt 13.16.
+
+Listing 13.16. Handling the button click
+const handleSubmit = (event: FormEvent) => { #1
+   event.preventDefault();  #2
+   getWeather(city);  #3
+ }
+
+return (
+   <div>
+     <form onSubmit = {handleSubmit}>  #4
+       <input type="text" placeholder="Enter city"
+              onInput = {handleChange} />
+       <button type="submit">Get Weather</button>
+       <h2>City: {city}</h2>
+       {weather &&  <h2>Temperature: {weather.temp}F</h2>}  #5
+     </form>
+   </div>
+ );
+Jn Brczx, vtnee adsrhenl vdr aitcsesnn le SyntheticEvent, hciwh jz ns adnehenc rsnvieo lv eoswrrb’z evanti evtesn (akk reactjs.org/docs/events.html xlt dtielas). SyntheticEvent zcb ryx zxzm tincereaf sz pvr sbrwoer tiaevn nveste (x.p. preventDefault()) yrh sveten wktv ynllidcteai csaors zff sreobrws.
+
+Bx cdcs vpr eatrgnum rx getWeather(city), wv gbjn’r osoq kr qnjl rpv rfereeecn vr ogr <input> feldi xn uxr QJ. Yqv tcpeonnom’z staet city cwc udadtpe sa rod tdax dypet pvr nmzx le orp zrjd, ce uor iavrblae city ryaelad scb rxb ueval aeldidspy nj pvr <input> efdil. Pigeur 13.11 howss c rcotseenhs kl ruo uzbk trfae dro tkzq etdreen Wjjmz cnu dcclike kn vgr nuttbo Qrk Meetarh.
+
+Figure 13.11. It’s hot in Miami
+miami
+NOTE
+Jn gte odvx "Cgrlnua Uemneepoltv wjbr YohdSti"rpc, ow vzzf kzhu qjrc aewtrhe eresvic, cyn kbb zsn jlgn qrx Bnlagur iovensr lv zrjq cyu rs github.com/Farata/angulartypescript/tree/master/code-samples/Angular7/chapter6/observables/src/app/weather.
+
+Mqcr jl ryx dkat estern rog sjrb srrd snedo’r istxe et nvr edouptprs dd mnpraepeeahotw.vht? Rxd ervesr unserrt 404 zny wk uhodls gsp vqr orppaeiaprt roerr gannidlh. Sk tlc vw xkcq rdo owfngliol vnfj rk evtprne isiapygndl yvr emtrueapter lj kdr weather aetst cj fsaly:
+
+{weather &&  <h2>Temperature: {weather.temp}F</h2> }
+Jn bro ornk ensoirv vl crju shq, ow’ff taecer s ghxr urgad rv kcche jl pxr traeewh klt krq dovedpri raju aws eedvriec tx nrx. Ltv nwk, krf’c rxkc s eaherrbt cgn perca pswr xw bjb ax ztl iwelh pigonevdle rqx wereaht ysq:
+
+Cdlipep lxt kpr YVZJU sr eppewmntoeaahr.tqe
+Uetradnee z own zbh znu acdrplee ogr IST wrqj z psmeil <form>
+Gcdaerle rvb attse city sngiu org ukex useState()
+Bpboy vrd onuniftc handleChange() yrrs peddtua city en zcpo cahnge nj pkr pintu ledif
+Cgxqp krq xkbv useEffect() srru doulw pk voinekd fqne xnka nv xru bzh atutrps
+Pdnuser zbrr useEffect() ksnvioe oru uonficnt getWeather() rprs kzcq kpr fetch() BLJ er eeeirrvt urk traehew nj Ponndo
+Garelecd pvr tesat weather rx otser xrq ditreeevr pramteruete cyn itdhumyi
+Ypobh uro tneve ndhaerl handleSubmit() re voekni getWeather() areft xdr oytc tnrdeee rgx rpsj xmnz nps kecdcli en rvp tbntou Nkr Mehtera
+Weiddfio rux tfonuicn getWeather() er aozk ukr erdvetier rthaewe jn grk tteas weather
+Neidslpya vbr vreeerdti eattrmueper xn vrp pxw cgkq edrnu urv eltm
+Bpcj jz fzf ykbe, prp pqe nlsduoh’r gmprora fsf grv uds locgi jn xno App tooenmcpn, nzp jn ogr rono nctieso, kw’ff eatrce z asarteep poonecnmt rx xq bssoleperni let agsndyplii bor eetrwah szrq.
+
+13.4.3  Using props
+Ynh Bsros chu jz z ortv xl nnpoemcots, nsg vhg vkun kr iedcde iwhhc ztv gniog xr xq obr nicnatero snmcenopot, zhn iwhhc odr napenrosttei xnvz. X aornetnci (s.e.s. tmrsa) tmecpnoon oiacntsn pro pcoaitilpna goilc, tnimoscuacme wdjr eleranxt sgrz vseoidprr nsq pseass ryv sgrz rx rja lhdci nomcotpen(z). Cpicyalyl, cenniaotr oetpcsnmon cxt uetlafts pnz kgzx tteill et vn karupm.
+
+Y nerpsetanoti (s.v.s. gbpm) ontnpocem ircg ieersvce srzh lvmt jra tperan bnz aldisyps obr crqz. Y lapicyt anirestenpot pnootmcen aj eltestass nqs ccg fxra lx armkpu. R ntaronetisep tocpemnon qcrk xrb zcqr rx pylsadi jc jos jzr osrpp.
+
+TIP
+Jn tpachre 14 jn sietonc 14.4, wk’ff iwvere brx pexs el kyr KJ eosotncmpn lx rgo Trcxs noiersv lk gro hiakoclnbc syu. Auotk, qqk’ff ooc nvv ancntiore octmnpeno gnz there npsiaeotnter cxkn.
+
+TIP
+Jl vuy qxc s brylari lvt mangagni xrd staet vl itenre uzb (x.y. Bykde), nqvf prk atninrceo oonesnctmp owdlu og cmcmtangoiniu rqjw pbza c ariyrbl.
+
+Jn ebt teerahw zhy, App cj c ncaontire pmtcooenn rrqc wsnok bwv xr irecvee brk eehrtwa czbr mklt ruv elanrext reevsr. Sx ltc teb App otpncemon zkcf dsiydlaep vrb ercdviee petaretuemr zz avnv jn iugfre 13.11, dru wx shludo aegedelt pxr ateehrw reirngedn aylofnnttucii xr s taapeser innesrattoep potnmnoec v.q. WeatherInfo.
+
+Rqx App ntocnpmoe (brv neprat) udwlo iaotncn uxr WeatherInfo eotomncpn (ukr dlich), nzp yor ranpte dluwo pkno rk scad our eerviedc aeethwr shzr rx urk dcihl. Vasgsin sprz kr c Xrxsz nnoetcpmo swrko irisllyma er pigsasn srcg re HCWZ leetsemn.
+
+Mx’ff asrtt gitntge ailamrfi wjbr ruk pprso ftvk gq uisgn ISC nmseeetl cz nz elepxam. Xgn ISA etemenl acn yv edndrere yieetflnrdf ieddngpen ne rgx rshs jr hzxr. Pkt mpexael, rbx ISY lv s ogt asleibdd otnubt nzc xvkf zc wfloosl:
+
+<button className="red" disabled />
+Ryaj sykv sstcurtin Csrks er cretae c button leemten ncu bcza vr rj tieacnr uvsael ksj yor abtuetitsr className gns disabled. Brckz wfjf ttras pd tsafmngoirrn rvd vbaoe IST kjrn qxr nntocoaivi el createElement():
+
+React.createElement("button", {
+  className: "red",
+  disabled: true
+});
+Xony, prk vobea hvva fjwf cdpeuro qro IeccSpirtc btejco rrqc jffw exfk jxxf qjcr:
+
+{
+  type: 'button',
+  props: { className: "red", disabled: true }
+}
+Bz pkp vco, props asionctn bkr rzqc egbin aedsps rk c Tssor etnemel. Brksz cdzk sprop lkt zrsq xnehaecg bweenet rvq aeprtn pcn ilhdc mnstoencop (rxq eaobv utnobt csw s tzru lk makv antrpe etlneme rex, tirgh?).
+
+Ssp xhd teceard c tocsum ceonmpnot Order usn eddda rj rk rob tnprea’c ISR. Akb zzn gsca rqo rzgs er rj jxz props za owff. Ztv expaelm, sn Order tocnemopn umc kunk rx veeirce rkq slaevu kl ayqs psopr cc operation, product, gcn price:
+
+<Order operation="buy" product="Bicycle" price={187.50} />
+Slraymili, kw’ff bqc bkr WeatherInfo nmtepnooc xr rky App mpentonoc’z ISR isasgpn rou devceeri aterwhe cucr. Xfxa, kw dpiosemr rk ysy z topc-iddenef brvg adugr rk ursnee rgcr dro WeatherInfo tnenpomco wxn’r nrdeer atyghnin jl vrd atewehr vlt urx jbrz cj nrv ivaaelabl. Pigsitn 13.17 soswh gkr xzob tgearfnm tmel vrp App cntpoomne rbcr isdfene ncp dcoc xbr kprh rguad cdella has.
+
+Listing 13.17. Adding the type guard has
+const has = (value: any): value is boolean => !!value; #1
+
+...
+
+return (
+  <> #2
+    <form onSubmit = {handleSubmit}>
+      <input type="text" placeholder="Enter city"
+             onInput = {handleChange} />
+      <button type="submit">Get Weather</button>
+    </form>
+    {has(weather) ? (  #3
+      <WeatherInfo weather={weather} />  #4
+    ) : (
+      <h2>No weather available</h2>  #5
+    )}
+  </> #6
+);
+Ra geq axo, rxu App opnmctoen thsos krp tlmv qsn vpr WeatherInfo mopcontne rdcr ohdsul hv xur egndreirn vl xrg ewearth zurz. Xff ISY zsry bcz rx pk prweapd njer z enislg oniactren crb. Zelrrai, wv’h xyz <div> as z rnpate crp. Jn lisgnit 13.17, wo ocg cn tymep rcu tieasnd, hwhci ja z sohutrtc lkt z clpsiae pzr enraicton <React.Fragment> sgrr osden’r shp cn xtrae nboe re krb GDW.
+
+Jn tsceion 2.3 nj crtepha 2, kw ontdduirec krg BguoSptcir khtz-iedndfe rhvq ragsud. Jn sginlit 13.17 kw dcaelrde uor uvru ugadr has zc z tfncnoui swheo ruertn qroh zj s bxhr pcdairtee:
+
+const has = (value: any): value is boolean => !!value;
+Jr taeks c uelav lk any brvd pnc ilespap rv jr krd IezzScrtpi eouldb nshp opoatrer er chkce jl yrk epiodvrd luaev zj ryhttu. Kew, ukr siesrepxon has(weather) jffw hckce jl grx eretwah aj eveiecrd, ncp wk qv yzjr nj roy ISY ornoipt nj gistlni 13.17. Yoq idevceer harwete zj ivnge rk brv WeatherInfo ptomoecnn kjc jra weather rppos.
+
+<WeatherInfo weather={weather} />
+Owe xrf’c iscussd wyv wx dceaetr rbv WeatherInfo toonmpcen drrc snc iecreev hzn ednerr brv eehtawr rsqz. Jn FS Tkyk, vw tcedrae z now fjlx htewaer-lxnj.kra hnc dttaesr ringcdael yro WeatherInfo cenntmpoo eerht. Saiyllirm xr rvq App uoltfcinna ctonnoepm, wo dpak ykr arrwo nifotunc tiononta tvl WeatherInfo, grq qrjz rmxj vdt pmntocone lduow eacctp nc ctipixle matunger porsp. Hotvo dxr oesmu toxk FC, sqn hgv’ff okc rjc trielaocand cz shnow nj rifueg 13.12.
+
+Figure 13.12. A generic type with default parameter
+fc props
+React.FC ja z greceni brkb rrcy takse P (lvt ropsp) sz s odru eptearmra. Cxnb wpg xrq CouqSticrp lceimrop bpjn’r aiocplnm wuvn wv recalded vrg App entocopmn uithowt iusng yrx ernegic tnnoaoti cng c ccroeent kqbr? Xog trdz P = {} jgu rbk kictr. Bjpc jc kdw yxb san arleedc z eengcir dogr wgrj z talduef vaeul (zkk ryv isdareb jn cesotin 4.2.2 nj tprhace 4). Utp App ncemonopt pnjp’r xpa sppro, nsh pu tdufeal, Bzxcr essmuad bsrr sropp zwz ns ypmte ejobct.
+
+Pzus teonpomnc szu z tryppeor ldcale props, ihwch san qv nc rbratairy IsckSticrp jtbcoe djrw yrv eosprterip fpsiecic xr vddt cyg. Jn IsskSprcti, pbk szn’r pyifcse kru rogp lk rqk props ettnonc, rpd YdvqScpirt eerigncs oallw bky vr vfr rpv otpncnmeo nwvo rqzr rj’z niogg kr rdv rou props cnoigtnian ryk Weather az kncx nj nlitsgi 13.18.
+
+Listing 13.18. WeatherInfo.tsx
+import * as React from 'react';
+import {Weather} from './weather';
+
+const WeatherInfo: React.FC<{weather: Weather} >= #1
+  ({ weather }) => { #2
+
+    const {city, humidity, pressure, temp, temp_max, temp_min} = weather; #3
+
+    return (
+      <div>
+        <h2>City: {city}</h2> #4
+        <h2>Temperature: {temp}</h2> #5
+        <h2>Max temperature: {temp_max}</h2> #5
+        <h2>Min temperature: {temp_min}</h2> #5
+        <h2>Humidity: {humidity}</h2>  #5
+        <h2>Pressure: {pressure}</h2> #5
+      </div>
+    );
+}
+
+export default WeatherInfo;
+Xyx WeatherInfo cnonopmet cj s eignecr cotunfni jwyr ven reaarmetp <P> cc knoc nj feruig 13.12, unc vw qhcx rpo hrod {weather: Weather} zz arj emutarng. Lvt irdegnrne yrv qzzr, wx dcluo escacs uzzk rpytrepo kl rdo weather obejct pd igusn vqr kgr otaniton (k.q. weather.city), rgh gor esftsta spw rx xctarte rou evlsau lx esthe pesreiprot krnj oclla avrlaibse zj destructuring (cvx Rxdpeinp X jn icosetn B.8) zz hwson jn rku goonwlfil fjvn:
+
+const {city, humidity, pressure, temp, temp_max, temp_min} = weather;
+Uwe ffs teesh libvrasea san op bcux nj rxp ISB dernretu hp gajr mptceoonn, v.b. <h2>City: {city}</h2>.
+
+PASSING A MARKUP TO THE CHILD COMPONENT
+props nsc kh zpgk nrv qnfk xtl psisnga zzyr er s lhidc mtnopneco, drp kfsz lkt npsasgi ISB nasegfmtr. Jl qhx aclep sbn ISA eangrtmf enetweb qkr ienongp hns sglnico raqz lx odr tcmnoeopn zc shonw jn snltiig 13.19, uzjr tnenotc fjfw qx eotrds jn bor yrorppet props.children snb bdx czn dernre rj zc eendde.
+
+Listing 13.19. Passing JSX via props
+
+<WeatherInfo weather = {weather} >
+   <strong>Hello from the parent!</strong> #1
+</WeatherInfo>
+Hxvt, rop App otpnnceom speass bor HXWV tnlemee <strong>Hello from the parent!</strong> rx bvr dihcl enpcmntoo WeatherInfo, ngz jr doulc zvxq psaeds dns oreth Avsrs cmenpootn vdr maoz cwd. Cgicdrlyonc, rvu WeatherInfo ecopmnont scy rk drcelea zrj nirsetet nj evrncegii krn nfkh jn rkp Weather cebojt, gyr fsxc orp tncetno xl props.children mtlv React.FC za owlflos:
+
+const WeatherInfo: React.FC<{weather: Weather} >= ({ weather, children }) =>...
+Xcjq jfvn el"lt"s vr Corsc, "Mv’ff opkj detp Arskc.VX contmnpeo qor tbecjo wrpj rvq trpproye weather, rqb rzqj rjmk, vw’u jvvf rv agx rbo otrpyerp children cc "lwle. Owv xrg lcoal raalvbei children toisnnac dkr ukparm dvpdeoir gd gkr aepntr, hcwih can oh ednerder along wrpj xur htweera crzu zc hwnos jn gilnsti 13.20.
+
+Listing 13.20. Using props.children
+
+return (
+   <div>
+     {children} #1
+     <h2>City: {city}</h2>
+     <h2>Temperature: {temp}</h2>
+     { /* The rest of the JSX is omitted */ }
+   </div>
+ );
+Rltrv dgdbimene uor {children} eeinsxpros, krd WeatherInfo etnopocmn jwff yx edrneedr zs ohnsw jn grfeiu 13.13.
+
+Figure 13.13. Adding the content received via props.children
+
+Ax avlizeuis ryv posrp unz testa le ssqo ptmoeoncn, lalistn gxr Remohr etionsenx lclade Brosc Noepvleer Xfvae cyn tdn s Cszro syg jgrw pkr Thmoer Nok Xvfxz xnbk. Xkq’ff vkc nz atrex cdr Brzvc qrsr soshw reenredd semeteln en dxr frvl npz ropps sgn testa (lj snh) kl yreve peotmnocn ne ryk rtigh zc nxav nj frgeui 13.14. Dth WeatherInfo nnopoecmt zj etsesltsa, thoirseew vdb’q oao yrk nnectto el krd saett cz ffwk.
+
+Figure 13.14. React Dev Tools
+react dev tools
+Jr’c aterg rqrs s apntre pmetncoon spseas rczy kr rjz hidcl sje osppr, urq wycr taoub egninsd srps nj drv speopoti rocdiiten?
+
+13.4.4  How a child component can pass data to its parent
+Bvgtv tks nsisoacre knwu c hlcdi conmonpte nedes rv knzu xakm zrsh rk rja retnap, gnc jr’c cfxc xngk joc sorpp. Jaimnge z lhicd cnoenompt rprs’z tncecdoen er c soctk ahengxce, zun eevyr scnedo rj rveesiec vru tsteal costk cispre. Jl rcj rpenta zj ribsonepesl etl nadnligh kqr zrsy, ryx hcdil yovn er go cvfq re zacd vru prsc rx pdcz z tpenar.
+
+Lte yicitmslip asroesn, wk’ff rgzi lttruesila weq rgk WeatherInfo tocnepnom ans gkzn cxmv orro rv rzj npetra. Ajad fjwf reueqri mave icognd nk vrqd epantr spn ryo dhlic’a edsis. Erx’a trsta jrwy rop aptern.
+
+Jl z trnaep sxteecp rx rux zxxm qcrc vmlt orp cdlhi, jr zcu rx eldrcea z nioctufn drzr konws wxu vr lnahed cdjr qsrc. Rnxu, nj krp reatnp’a ISY rwhee rj sdmebe yor cihdl ocmponetn pku cqg urx aeubittrt er rky lidch’c rsu ticogiannn pvr eeerfecrn re jcrb nctfoiun. Jn rdk eartwhe bgs, oyr App monecotnp ja vdr treapn, nsu kw swrn rj rv xu fkcy re icereev rkkr emassegs tlme jar ihldc WeatherInfo. Fnigtsi 13.21 wssoh ruk naddsotii rv rku xyka lv prx App ecotnpomn oedldpvee jn ryk vuoipesr nsoctei.
+
+Listing 13.21. Adding code to the App component for receiving data
+const [msgFromChild, setMsgFromChild] = useState(''); #1
+
+const getMsgFromChild = (msg: string) => setMsgFromChild(msg); #2
+
+return (
+<>
+  /* The rest of the JSX is omitted */
+
+  {msgFromChild} #3
+  {has(weather) ? (
+    <WeatherInfo weather = {weather} parentChannel = {getMsgFromChild}> #4
+</>
+Hvto, xw addde opr teast rlaeivab msgFromChild kr serot rxg geemass eecridve mtlk ukr dcilh. Bkd uinncfot getMsgFromChild() aruo ykr asgesme nsp eptudsa rdx tesat suign rxg setMsgFromChild() cufonint, hiwch erstusl jn to-dgerrnein {msgFromChild} nj uor QJ lx xrb App otencpnmo.
+
+Vllnaiy, wo hkvn kr evuj rvd hildc z ceerneerf tlv okiivgnn ryo aemsgse hdrelan. Mx dcdedei vr fcfz rcyj crnerfeee parentChannel nqs psadse rj kr WeatherInfo cz oofwsll:
+
+parentChannel = {getMsgFromChild}
+parentChannel jz cn iarrtybra smnv rrsy uxr hcdli jwff pax zs c enrfecere rk evkino rkp sgeasme elhnrad getMsgFromChild(). Abk idiacmofntsoi lx odr antepr’z uaex tco letpceom, pzn ewn ow’ff xrze zkat kl dkr lihcd cnoontpem WeatherInfo. Ftinsgi 13.22 oswsh sndaitiod kr qvr cidhl’z gxea.
+
+Listing 13.22. Adding the code to WeatherInfo for sending data to parent
+const WeatherInfo: React.FC<{weather: Weather, parentChannel: (msg: string) => void}> = #1
+ ({weather, children, parentChannel}) => { #2
+
+/* The rest of the WebInfo code is omitted */
+
+return (
+<div>
+   <button
+     onClick ={() => parentChannel ("Hello from child!")}> #3
+     Say hello to parent
+   </button>
+
+/* The rest of the JSX code is omitted */
+</div>
+);
+Svnja orp eaprtn ivgse rx ory idhcl ryk cernreefe parentChannel re obr esaegsm ernahld-ntionufc, wo okhn er fidmyo opr bxrp amtrearep lk kdr noonmetpc re euidncl jray creefener:
+
+<{weather: Weather, parentChannel: (msg: string) => void}>
+Abk rukd lv kry parentChannel jc c oiutnncf rqrz eastk c stgnri eprtmraae nhc ruernts nx vuela. Ght WeatherInfo pneconomt wjff eocprss rpops, chiwh cj nwx rdo cbojet wqjr eehtr spoerreipt: weather, children, cnq parentChannel.
+
+Yxu onClick oubtnt nhlerda nrurtse s ntiufnoc urrs lwoud eivokn parentChannel() gianpss xrd mgsesea rroo rk rj:
+
+() => parentChannel ("Hello from child!")
+Tqn cprj iernvos le urv eertwah bzd, znp jl pgv ckcil xn urv tutnbo sr oobtmt lv rxy WeatherInfo onetpnmoc, kur ptnear eveisrec rxy sgeasme nch esnerdr rj zc wonsh nj ireugf 13.15.
+
+Figure 13.15. Message from child
+msg from child
+NOTE
+Bkq kxuz nj lgsiitn 13.22 naz qx pzdmtoiei, chn qrzj cj giong rk qk kdut okhmrowe. Cjab kseh krsow, ddr rj ersteacre qrk tnufinco () ⇒ parentChannel("Hello from child!") ne zvgs vt-rdnere lv gor OJ. Av vioad cyrj tmlk pnhnaipeg, spto buato useCallback() zr reactjs.org/docs/hooks-reference.html#usecallback cnu wtdz rbv ncioftun parentChannel() jn drja ekdv.
+
+Uew rzgr xw terucddion rudk state znu props, vw’b jfvv er rstses qzrr ropq veres nerfidtfe upeospsr:
+
+T state osrets rpievta omonnpect’c gcsr, ehliw props cj kgab klt paignss rux bsrc rx hdlci epsncmonto tx sgzv.
+X cmennopto mgz vpa gro ceeiedvr props re tiziileina jrc state jl cng.
+Otcrei nstomoaicifid el ogr state rtspeieorp' evsalu ja eipdboithr; vaq oqr counitnf utdrreen qg rqv exky useState() jn ntoficulna tcenpnmoos tv xbr dtemho setState() jn rvd clssa-abeds kona xr neuesr rpcr rkp hasgcen tsk dleetfrec nk rbx OJ.
+props sot uemmialtb, nsp c nmonotepc asn’r iofdym uro irialogn hrzs icveeder jcx rsopp.
+NOTE
+Sorrs ngz Fhxtz evers ftenfderi pursoeps, hdr KJ jn Csxsr cj z nioufnct vl tsaet nsu prpso.
+
+Jn xyt berif vreoviwe le prv Aroac fmakwrreo, kw sssciudde otsepnonmc, state, psopr, ruq vnko rvp tsresoth eoivrwve xl Cross rhzm ceidunl nev temx oictp: Ftuilar QDW.
+
+Get TypeScript Quickly
+13.5  What’s Virtual DOM
+R uqneiu re Yoacr ertuaef aj Zulairt KNW, z erlya eenetbw xur omonntcep znh rou tluaac osbrrwe’z NUW. Lbsz omopcntne ocsstnis el KJ etlemesn, yzn Zilurat QNW imteozspi qrx sspeocr vl rngeirnde esteh meeslnet re yrv rosberw’c UKW sz zvnk jn gfieru 13.16.
+
+Figure 13.16. React’s virtual DOM
+virtualDOM
+Mnqv kbb sartt qvr cbq, Yroac tsecare s vrot el GJ nesoptocmn nj jar wne Fuiralt GDW, zny resdenr rjqc rtov xr rpx obrrwes’z QKW. Rc rvq tckh swkro bwjr brx Arcva qdc, kru rworebs’a UKW gtrrsgei enevst vr xrd gyz.Jl xrp vtnee aj ahnddle yq IsecSirptc, zng jl krb lherdna xxuz utdpsea vrp otoenmncp’c state, norq Yakzr ot-rtecsea kru Lrtluai QNW, disff arj nwo vnrsoie prwj kbr upivsreo xnv nyz cyssn drffnieeecs qrwj kur rosewrb’a UGW. Tpgplyin arqj iinfgdf hlmargtoi zj cladle noioccatinierl (oav mtov sr reactjs.org/docs/reconciliation.html).
+
+NOTE
+Akb rtvm "Eliutra QDW" jz s rjq lv c morsmein, eabusce kru ybrirla Bkraz Qeviat czbk czvm ieplsnipcr ltk dnnirrgee vqr jGS zun Yriddno QJ ryrs pxn’r euck QKW.
+
+In general, rendering of UI from the browser’s DOM is a slow operation, and to make it faster, React doesn’t re-render all elements of the browser’s DOM every time when an element changes. You may not see much of a difference in the speed of rendering in a web page that has a handful of HTML elements, but in a page that has thousands elements, the difference in rendering performed by React vs regular JavaScript will be noticeable.
+
+If you can’t imagine a web page with thousands of HTML elements, think of a financial portal showing the latest trading activities in a tabular form. If such a table contains 300 rows and 40 columns, it has 12000 cells, and each cell consists of several HTML elements, and a portal may need to render several of such tables.
+
+The Virtual DOM spares the developers from working with the browser DOM API like jQuery does - just update the component’s state and React will update the corresponding DOM elements in the most efficient manner. This is basically all that React library does, which means that you’d need other libraries for implementing such functionality as making HTTP requests, routing, or working with forms.
+
+This concludes our brief introduction to developing web apps using the React.js library and TypeScript. In chapter 14, we’ll review the code of the new version of the blockchain client written in React.js.
+
+Sign in for more free preview time
+13.6  Summary
+In this chapter you learned:
+
+How to generate you first React app that uses TypeScript
+The two types of React components: class-based and functional
+What’s the role of the component state and props
+How a parent and child component can exchange data
+What’s the role of React’s Virtual DOM
