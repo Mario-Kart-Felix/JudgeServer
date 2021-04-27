@@ -1,0 +1,564 @@
+{
+  "openapi": "3.0.2",
+  "servers": [
+    {
+      "url": "https://api.gitguardian.com"
+    }
+  ],
+  "info": {
+    "title": "GitGuardian API",
+    "version": "1.0.2",
+    "termsOfService": "https://www.gitguardian.com/legal-terms",
+    "license": {
+      "name": "GitGuardian",
+      "url": "https://www.gitguardian.com/legal-terms"
+    },
+    "x-logo": {
+      "url": "https://static.gitguardian.com/Logo-blue.png",
+      "altText": "GitGuardian"
+    },
+    "contact": {
+      "name": "GitGuardian",
+      "email": "support@gitguardian.com",
+      "url": "https://www.gitguardian.com"
+    },
+    "description": "\n# Introduction\n\nWhether you want to build a complete integration with your software development\nworkflow or simply want to test GitGuardian's policy break detection on any text content,\nyou can use our API.\n\n- The base url for the latest version is `api.gitguardian.com/v1` over `HTTPS`.\n- All data is sent and received as JSON by default.\n- All timestamps returned are ISO-8601 compliant, example:\n```python\n2020-03-16T04:46:00+00:00 # for date-time\n```\n\nGitGuardian supported wrappers:\n- Python: [**py-gitguardian**](https://github.com/GitGuardian/py-gitguardian)\n\nGitGuardian provides you with [**GitGuardian Shield**](https://github.com/GitGuardian/gg-shield),\na CLI application that uses the GitGuardian API through py-gitguardian\nto scan your files and detect potential secrets or issues in your code.\n\nThis CLI application can be used in many CIs (such as GitHub Actions, GitLab Pipelines, CircleCI,...)\nor as a pre-commit or pre-receive hook.\n\n# Authentication\n\nThe GitGuardian API uses API keys to authenticate requests.\n\nYou need to [create an account](https://dashboard.gitguardian.com/auth/signup) before getting started\nin order to get an API key.\n\nYour API key can be created and revoked from the\n[API section of your dashboard](https://dashboard.gitguardian.com/api).\n\nYour API key must kept private and should neither be embedded directly in the code nor versioned in Git.\n(Please do not push GitGuardian's API keys to public GitHub repositories ^^).\n\nBeware your API keys can expire and can be revoked.\n\nUse [/v1/health](#operation/health_check) to check the\nvalidity of your token if needed.\n\n```bash\ncurl -H \"Authorization: Token ${TOKEN}\" \\\n  https://api.gitguardian.com/v1/health\n```\n\n\n<!-- ReDoc-Inject: <security-definitions> -->\n"
+  },
+  "tags": [
+    {
+      "name": "Scanning",
+      "description": "Use GitGuardian's brain at your leisure.\n\nScanning API allows you to scan any content you want using GitGuardian's secrets detection algorithms.\n"
+    }
+  ],
+  "paths": {
+    "/v1/scan": {
+      "post": {
+        "tags": [
+          "Scanning"
+        ],
+        "operationId": "content_scan",
+        "summary": "Content Scan",
+        "description": "Scan provided document content for policy breaks.\n\nRequest body shouldn't exceed 1MB.\n\nThis endpoint is stateless and as such will not store in our servers neither the documents nor the secrets found.\n",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/document"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Scan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/scan_result"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/OverQuotaError"
+          },
+          "503": {
+            "$ref": "#/components/responses/MaintenanceResponse"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "Shell",
+            "label": "cURL",
+            "source": "curl --request POST \\\n  --url https://api.gitguardian.com/v1/scan \\\n  --header 'authorization: Token <Insert API Key>' \\\n  --header 'content-type: application/json' \\\n  --data '{\n\"document\": \"import urllib.request\\nurl = '\\''http://jen_barber:correcthorsebatterystaple@cake.gitguardian.com/isreal.json'\\''\\nresponse = urllib.request.urlopen(url)\\nconsume(response.read())\",\n\"filename\": \".env\"\n} '\n"
+          },
+          {
+            "lang": "Python",
+            "source": "import os\nfrom pygitguardian import GGClient\ndoc_content = \"import urllib.request\\n\nurl = 'http://jen_barber:correcthorsebatterystaple@cake.gitguardian.com/isreal.json'\\n\nresponse = urllib.request.urlopen(url)\\n\nconsume(response.read())\"\nclient = GGClient(token=API_KEY)\nscan_result = client.content_scan(filename=\".env\", document=doc_content)\nprint(\"Scan results:\", scan_result.has_secrets, \":\", scan_result.policy_break_count)\n"
+          }
+        ]
+      }
+    },
+    "/v1/multiscan": {
+      "post": {
+        "tags": [
+          "Scanning"
+        ],
+        "operationId": "multiple_scan",
+        "summary": "Multiple Content Scan",
+        "description": "Scan provided document contents for policy breaks.\nMultiple documents are returned by the same index order.\n\nRequest body shouldn't exceed 2MB and individual documents shouldn't exceed 1MB.\n\nThis endpoint is stateless and as such will not store in our servers neither the documents nor the secrets found.\n",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "description": "List of documents to scan.",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/components/schemas/document"
+                },
+                "example": [
+                  {
+                    "filename": ".env",
+                    "document": "import urllib.request\nurl = 'http://jen_barber:correcthorsebatterystaple@cake.gitguardian.com/isreal.json'\nresponse = urllib.request.urlopen(url)\nconsume(response.read())\n"
+                  },
+                  {
+                    "filename": "__init__.py",
+                    "document": "__version__=\"1.0.0\""
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Scan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "List of scan results. Corresponding index to document array.",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/components/schemas/scan_result"
+                  },
+                  "example": [
+                    {
+                      "policy_break_count": 2,
+                      "policies": [
+                        "Filename",
+                        "File extensions",
+                        "Secrets detection"
+                      ],
+                      "policy_breaks": [
+                        {
+                          "type": ".env",
+                          "policy": "Filenames",
+                          "matches": [
+                            {
+                              "type": "filename",
+                              "match": ".env"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Basic Auth String",
+                          "policy": "Secrets detection",
+                          "matches": [
+                            {
+                              "type": "username",
+                              "match": "jen_barber",
+                              "index_start": 52,
+                              "index_end": 61,
+                              "line_start": 2,
+                              "line_end": 2
+                            },
+                            {
+                              "type": "password",
+                              "match": "correcthorsebatterystaple",
+                              "index_start": 63,
+                              "index_end": 87,
+                              "line_start": 2,
+                              "line_end": 2
+                            },
+                            {
+                              "type": "host",
+                              "match": "cake.gitguardian.com",
+                              "index_start": 89,
+                              "index_end": 108,
+                              "line_start": 2,
+                              "line_end": 2
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "policy_break_count": 0,
+                      "policies": [
+                        "Filename",
+                        "File extensions",
+                        "Secrets detection"
+                      ],
+                      "policy_breaks": []
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/OverQuotaError"
+          },
+          "503": {
+            "$ref": "#/components/responses/MaintenanceResponse"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "Shell",
+            "label": "cURL",
+            "source": "curl --request POST \\\n  --url https://api.gitguardian.com/v1/multiscan \\\n  --header 'authorization: Token <Insert API Key>' \\\n  --header 'content-type: application/json' \\\n  --data '[\n{\n\"document\":\t\"import urllib.request\\nurl = '\\''http://jen_barber:correcthorsebatterystaple@cake.gitguardian.com/isreal.json'\\''\\nresponse = urllib.request.urlopen(url)\\nconsume(response.read())\",\n\"filename\": \".env\"\n},\n{\n  \"document\":\t\"__version__=\\\"1.0.0\\\"\",\n  \"filename\": \"__init__.py\"\n}\n]'\n"
+          },
+          {
+            "lang": "Python",
+            "source": "import os\nfrom pygitguardian import GGClient\ndoc_content = \"import urllib.request\\n\nurl = 'http://jen_barber:correcthorsebatterystaple@cake.gitguardian.com/isreal.json'\\n\nresponse = urllib.request.urlopen(url)\\n\nconsume(response.read())\"\nclient = GGClient(token=API_KEY)\nto_scan = [{\"filename\": \".env\", \"document\": doc_content},\n  {\"filename\": \"__init__.py\", \"document\": \"__version__=\"1.0.0\"}]\nscan_results = client.multi_content_scan(to_scan)\nprint(scan_results)\n"
+          }
+        ]
+      }
+    },
+    "/v1/health": {
+      "get": {
+        "tags": [
+          "Scanning"
+        ],
+        "operationId": "health_check",
+        "summary": "Health Check",
+        "description": "Check the status of the API and your token without spending your quota.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/HealthResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "503": {
+            "$ref": "#/components/responses/MaintenanceResponse"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "Shell",
+            "label": "cURL",
+            "source": "curl --request GET \\\n    --url https://api.gitguardian.com/v1/health \\\n    --header 'authorization: Token <Insert API Key>'\n"
+          },
+          {
+            "lang": "Python",
+            "source": "import os\nfrom pygitguardian import GGClient\n# store your API key in an environment variable\nclient = GGClient(token=os.getenv(\"GG_API_KEY\"))\nhealth_obj = client.health_check()\nif bool(health_obj):\n    print(\"Healthy API server\")\n"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "document": {
+        "type": "object",
+        "title": "Document",
+        "required": [
+          "document"
+        ],
+        "properties": {
+          "filename": {
+            "type": "string",
+            "example": ".env",
+            "maxLength": 256
+          },
+          "document": {
+            "type": "string",
+            "example": "\nimport urllib.request\nurl = 'http://jen_barber:correcthorsebatterystaple@cake.gitguardian.com/isreal.json'\nresponse = urllib.request.urlopen(url)\nconsume(response.read())\n"
+          }
+        }
+      },
+      "scan_result": {
+        "type": "object",
+        "title": "Scan Result",
+        "description": "Result of a content scan.",
+        "required": [
+          "policy_break_count",
+          "policies",
+          "policy_breaks"
+        ],
+        "properties": {
+          "policy_break_count": {
+            "type": "integer",
+            "description": "Number of policy breaks on this document.",
+            "minimum": 0,
+            "example": 2
+          },
+          "policies": {
+            "type": "array",
+            "description": "Policies checked on this document.",
+            "minItems": 0,
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Filename",
+              "File extensions",
+              "Secrets detection"
+            ]
+          },
+          "policy_breaks": {
+            "type": "array",
+            "description": "List of policy breaks.",
+            "minItems": 0,
+            "items": {
+              "$ref": "#/components/schemas/policy_break"
+            },
+            "example": [
+              {
+                "type": ".env",
+                "policy": "Filenames",
+                "matches": [
+                  {
+                    "type": "filename",
+                    "match": ".env"
+                  }
+                ]
+              },
+              {
+                "type": "Basic Auth String",
+                "policy": "Secrets detection",
+                "matches": [
+                  {
+                    "type": "username",
+                    "match": "jen_barber",
+                    "index_start": 52,
+                    "index_end": 61,
+                    "line_start": 2,
+                    "line_end": 2
+                  },
+                  {
+                    "type": "password",
+                    "match": "correcthorsebatterystaple",
+                    "index_start": 63,
+                    "index_end": 87,
+                    "line_start": 2,
+                    "line_end": 2
+                  },
+                  {
+                    "type": "host",
+                    "match": "cake.gitguardian.com",
+                    "index_start": 89,
+                    "index_end": 108,
+                    "line_start": 2,
+                    "line_end": 2
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "policy_break": {
+        "type": "object",
+        "title": "Policy Break",
+        "description": "Issue found in your Document",
+        "required": [
+          "type",
+          "policy",
+          "matches"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of detected policy."
+          },
+          "policy": {
+            "type": "string",
+            "description": "Name of failing policy."
+          },
+          "matches": {
+            "type": "array",
+            "description": "List of secret matches.",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/match"
+            }
+          }
+        }
+      },
+      "match": {
+        "type": "object",
+        "required": [
+          "type",
+          "match"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of match"
+          },
+          "match": {
+            "type": "string",
+            "description": "Matched string of failure"
+          },
+          "line_start": {
+            "type": "integer",
+            "description": "start line number of match (index origin = 1)"
+          },
+          "line_end": {
+            "type": "integer",
+            "description": "end line number of match (index origin = 1)"
+          },
+          "index_start": {
+            "type": "integer",
+            "description": "start index of match in file as an array (index origin = 0)"
+          },
+          "index_end": {
+            "type": "integer",
+            "description": "end index of match in file as an array (index origin = 0)"
+          }
+        }
+      },
+      "error": {
+        "type": "object",
+        "title": "Error",
+        "description": "Error obtained in an API response",
+        "required": [
+          "detail"
+        ],
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "Details on response."
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "API Key": {
+        "description": "\n\nUsage: `Token <API Key>` in `authorization` header.\n",
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Token <API Key>"
+      }
+    },
+    "responses": {
+      "HealthResponse": {
+        "description": "API on and key valid response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "Health Status",
+              "description": "Health check response.",
+              "required": [
+                "detail"
+              ],
+              "properties": {
+                "detail": {
+                  "type": "string",
+                  "description": "API key status."
+                }
+              }
+            },
+            "examples": {
+              "healthy": {
+                "summary": "Valid API Key.",
+                "value": {
+                  "detail": "Valid API key."
+                }
+              }
+            }
+          }
+        }
+      },
+      "MaintenanceResponse": {
+        "description": "API under maintenance",
+        "headers": {
+          "X-Maintenance": {
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "example": true
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            },
+            "examples": {
+              "error": {
+                "summary": "API maintenance",
+                "value": {
+                  "detail": "API under scheduled maintenance."
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequestError": {
+        "description": "Invalid data",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Invalid Data",
+                "value": {
+                  "detail": "Invalid data."
+                }
+              }
+            }
+          }
+        }
+      },
+      "UnauthorizedError": {
+        "description": "Invalid API key",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Invalid APIKey",
+                "value": {
+                  "detail": "Invalid API key."
+                }
+              }
+            }
+          }
+        }
+      },
+      "OverQuotaError": {
+        "description": "Quota limit reached",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            },
+            "examples": {
+              "error": {
+                "summary": "Quota limit reached.",
+                "value": {
+                  "detail": "Quota limit reached."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "API Key": []
+    }
+  ]
+}
