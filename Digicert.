@@ -1,0 +1,119 @@
+Install your DigiCert site seal
+Information for installing your DigiCert Smart Seal, Norton seal, DigiCert basic, Thawte, and GeoTrust site seals on your website
+Before you begin
+Before you install the site seal, make sure you meet these prerequisites:
+
+You must have access to and be familiar with your website code.
+You must have a basic understanding of HTML and JavaScript.
+You must have the site seal code.
+Site seal code
+The site seal code only works on domains included in the TLS/SSL certificate order. This list of domains is available on the certificate's Order details page in your CertCentral account. When you email the site seal code to yourself, Your DigiCert Site Seal email includes a list of valid domains.
+
+Don't modify the ID attribute or the JavaScript. DigiCert recommends using the site seal code as-is. Modify code at your own risk.
+
+Reinstall the site seal code
+After installing the site seal code on your website, you can modify the site seal from your CertCentral account or via your CertCentral Services API integration.
+
+Some modifications, such as changing the size of the site seal image, do not require you to reinstall the site seal code. However, if you modify the hover effect, you must reinstall the site seal code for those changes to take effect on your website.
+
+Hover effect modifications:
+
+Enabling or disabling the Smart Seal hover effect.
+Using the Smart Seal with the hover effect enabled and then switching to the Norton seal.
+Get the site seal code
+In your CertCentral account, in the left main menu, go to Certificates > Orders.
+
+On the Orders page, in the Order # column, click the certificate's order number link.
+
+On the Order # details page, click Site Seal.
+
+On the certificate's Order # details page, in the Do you need to install your site seal? section, you can copy the site seal code or email the site seal code to yourself.
+
+Add the site seal code to your website
+The site seal code consists of two code parts: HTML and JavaScript.
+
+HTML code
+
+The HTML code, "div" container block, displays the DigiCert site seal on your webpage. Paste the "div" portion of the code into your page code wherever you want the seal to appear on the web page.
+
+JavaScript code
+
+The JavaScript code makes the site seal work. For example, the code makes the site seal appear on the page and styles the "div" container block. Paste the script portion of the page code anywhere on the page (for example, next to the "div" block).
+
+Add the site seal code
+When adding the site seal code to your webpage, you have two options: place all the code together or place the HTML code in one location and the JavaScript code in another area.
+
+Option 1: Place all the code in one location
+
+Copy the code (HTML and JavaScript together) and paste it into your HTML document in the location where you would like your site seal to appear on the page.
+
+Option 2: Place the HTML code in one location and the JavaScript code in another location
+
+Copy the JavaScript code and paste it into your HTML document within the HEAD section at the top of the file.
+
+DigiCert recommends placing this code below any other JavaScript tags that are already on the webpage.
+
+Copy the HTML code. Then paste it into your HTML document, in the location where you would like your site seal to appear on the page.
+
+Style the site seal
+HTML "div" tag
+
+You can place the HTML "div" tag anywhere you want the site seal to appear, on your page. You can apply standard CSS styles to the "div" tag: in line with a STYLE attribute or by adding a CLASS attribute and using a stylesheet.
+
+Don't modify the ID attribute. Modify code at your own risk.
+
+Site seal
+
+The site seal itself is styled automatically via JavaScript.
+
+Don't modify the JavaScript. Modify code at your own risk.
+
+Set the language preference for the site seal information page
+The site seal information page supports the following languages:
+
+English (default setting)
+Español (Spanish)
+Français (French)
+日本語 (Japanese)
+Português (Portuguese)
+To change the default language preference for the site seal information page, add the "lang" attribute to the site seal "div" tag or root "html" element on the page.
+
+These language changes only apply to the site seal information page. They do not change the site seal language. Currently, the site seal only supports English.
+
+"lang" attribute values:
+en – English
+es – Español
+fr – Français
+ja – 日本語
+pt – Protuguês
+Add the "lang" attribute to the "div" tag
+To set the default language preference for the site seal information page, add the "lang" attribute to the "div" tag in the site seal code.
+
+Example of site seal code with "lang" attribute
+
+<!-- DigiCert Seal HTML -->
+<!-- Place HTML on your site where the seal should appear -->
+<div id="DigiCertClickID_f8wBj4Ja" lang="es"></div>
+
+<!-- DigiCert Seal Code -->
+<!-- Place with DigiCert Seal HTML or with other scripts -->
+<script type="text/javascript">
+	var __dcid = __dcid || [];
+	__dcid.push({"cid":"DigiCertClickID_f8wBj4Ja","tag":"f8wBj4Ja"});
+	(function(){var cid=document.createElement("script");cid.async=true;cid.src="//seal.digicert.com/seals/cascade/seal.min.js";var s = 
+document.getElementsByTagName("script");var ls = s[(s.length - 1)];ls.parentNode.insertBefore(cid, ls.nextSibling);}());
+</script>
+Add the "lang" attribute to the root "html" element on the webpage
+To set the default language preference for the site seal information page, you can add the "lang" attribute to the root "html" element on the page.
+
+For example: <html lang="fr">
+
+What's next
+A site seal does not work on a development/test domain if you did not include that domain in the certificate order. The site seal only works on the domains included in the certificate order.
+
+If you enable or disable the site seal hover effect after you've installed the site seal code on your website, you must reinstall the code for that change to take effect.
+
+Certificate order renewals
+When you renew a CertCentral certificate order, the site seal code generated for the previous order is still valid. You don't need to update the code on your website.
+
+However, if you place a new certificate order that is not a renewal of the existing order, the current site seal code will no longer work. In this case, you must get the site seal code for that certificate order and update the site seal code on your website.
