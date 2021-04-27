@@ -1,0 +1,1023 @@
+
+State of Texas Seal	Court of Appeals
+Fifth District of Texas
+Abbreviations in Case Information Data Fields
+
+
+01:Type of Criminal Offense
+01:ANDERS         - Ander's
+01:ARSON          - Arson
+01:ASSAULT        - Assault or Attempted Murder
+01:BURGLARY       - Burglary
+01:CAP MURD       - Capital Murder
+01:CAR THFT       - Auto Theft
+01:COK POSS       - Possession of Cocaine
+01:COK SALE       - Sale/Delivery of Cocaine
+01:DBL JEOP       - Double Jeopardy
+01:DENY BND       - Deny Bond
+01:DWI            - DWI
+01:EX BOND        - Excessive Bond
+01:FORGERY        - Forgery
+01:FUGITIVE       - Fugitive From Justice
+01:HABEAS         - Habeas Corpus
+01:MAR POSS       - Marijuana Possession
+01:MAR SALE       - Marijuana Sale or ManUfacture
+01:MISD           - All Misdemeanors
+01:MURDER         - Murder-Voluntary Manslaughter
+01:ODG POSS       - Other Drug Possession
+01:ODG SALE       - Other Drug Sale
+01:OTH FEL        - Other Felony
+01:RAPE           - Rape
+01:ROBBERY        - Robbery
+01:SX ABUSE       - Sexual Abuse, Rape or Injury of a Child
+01:THEFT          - Theft
+
+
+02:Type of Civil Offense
+02:AUTO PI        - Auto Personal Injury/Damages
+02:CERTRI         - Certiorari
+02:CONDEM         - Condemnation
+02:CONTRACT       - Accounts, Contracts, Notes
+02:DIVORCE        - Divorce
+02:HABCOR         - Habeas Corpus
+02:INJUNC         - Injunction
+02:JUVENILE       - Juvenile
+02:MANDAMUS       - Writ of Mandamus
+02:NON ADV        - Non-Adversary
+02:OTH CIV        - Other Civil
+02:OTHER PI       - Other Personal Injury/Damages
+02:PROHIB         - Prohibition
+02:RECIPROC       - Reciprocals
+02:T/INJUNC       - Temporary Injunction
+02:TAX            - Tax
+02:WORK COM       - Workers Compensation
+02:WR ERR         - Writ of Error
+
+
+03:Type of Fees
+03:CLERKS RECORD  - Clerk's record
+03:COPIES         - Photocopies
+03:CREDIT         - Credit due to party paying
+03:EXPRESS        - Express Fees
+03:FAX            - Fax
+03:FILING         - Filing Case
+03:MEDIATION FEE  - Mediation Fee
+03:OTHER          - Other Fees
+03:RPTS RECORD    - Reporter's Record
+03:STATE OF FACTS - Statement of Facts
+03:SUP CLK RECORD - Supplemental Clerk's record
+03:SUP RPT RECORD - Supplemental reporter's record
+03:SUP SOF        - Supplemental Statement of Facts
+03:SUP TRANSCRIPT - Supplemental Transcript
+03:SUPREME COURT  - Supreme Court Fees
+03:TRANSCRIPT     - Transcript
+
+
+04:Paid Status
+04:EXEMPT         - Exempt
+04:NOT PAID       - Fee Not Paid
+04:OFF            - Write-off
+04:PAID           - Fee Paid
+04:PAUPER         - Pauper Oath
+04:UNKNOWN        - Unknown
+
+
+05:Party Code
+05:ADL            - Civil - Ad Litem
+05:ANT            - Civil - Appellant
+05:APE            - Civil - Appellee
+05:APP            - Criminal - Applicant
+05:CLK            - County/District Court Clerk
+05:CTR            - Court Reporter - Trial Court
+05:DCK            - District Clerk
+05:INV            - Intervenor
+05:JDG            - Judge - Trial Court
+05:MED            - Mediator
+05:OTH            - Other
+05:REL            - Relator
+05:RES            - Respondent
+05:RLP            - Real Party in Interest
+05:STA            - Criminal - State of Texas
+
+
+06:Person Code
+06:ADL            - Ad Litem
+06:ATT            - Attorneys
+06:CLK            - County/District Court Clerk
+06:CTR            - Court Reporter
+06:DCK            - District Clerk
+06:INM            - Inmates
+06:JDG            - Judge
+06:MED            - Mediator
+06:OTH            - Other
+06:PHV            - Pro Hac Vice
+
+
+07:Counsel Type
+07:ADL            - Ad Litem
+07:AM CUR         - Amicus Curiae
+07:AP ATT         - Appointed Attorney
+07:ATT GN         - Attorney General
+07:CD ATT         - Criminal District Attorney
+07:CT ATT         - County Attorney
+07:DCK            - District Clerk
+07:DT ATT         - District Attorney
+07:JDG            - Judge
+07:LD             - lead counsel
+07:PD ATT         - Public Defender
+07:PRO BO         - Pro Bono
+07:PRO SE         - Pro Se
+07:PUB DF         - Assistant Public Defender
+07:RE ATT         - Retained Attorney
+07:ST ATT         - State Prosecuting Attorney
+
+
+08:Events of the Case
+08:$10 FEE DUE    - $10.00 fee due
+08:$10 FEE PAID   - $10.00 Fee Paid
+08:$125 FEE DUE   - $125 filing fee due
+08:$125 FEE PD    - $125 filing fee paid
+08:$50 FEE DUE    - $50 filing fee due
+08:$50 FEE PAID   - $50.00 Fee Paid
+08:$75 FEE DUE    - $75.00 filing fee due
+08:$75 FEE PAID   - $75 Fee Paid
+08:28.3 RECORD    - Sworn copies from parties instead of clerk record
+08:32.1 NOTICE    - Docketing statement notice
+08:ABATE DISP     - Motion to Abate Disposed
+08:ABRIEF DISP    - Amended brief disposed
+08:ABRIEF FILED   - Amended Brief Filed
+08:ABRIEF RECD    - Amended Brief Received
+08:ACCELER DISP   - Motion to Accelerate Appeal Disposed
+08:ADR LTR SENT   - Letter Sent Regarding ADR Program
+08:ADR NC LTR     - ADR Non-Compliance Letter Sent Re: CAIS
+08:ADR RFR ORD    - ADR Referral Order Issued
+08:ADR RPT DISP   - ADR Referral Order Disposed
+08:ADR RPT DUE    - Settle/Not Settle - ADR Report Due
+08:ADR RPT FLD    - ADR Report Filed
+08:AFF REV ISS    - Cert. of Affirmance/Reversal
+08:AFFID DISP     - Affidavit disposed of
+08:AFFID FILED    - Affidavit Filed
+08:AFFIRM DISP    - Motion to Affirm disposed
+08:AM BRF DUE     - Amended brief due
+08:ANDR BRF LTR   - Anders Brief Filed - Letter Sent to Appellant
+08:ANOA FILED     - Amended notice of appeal filed
+08:ANT NC LTR     - Letter Sent to Appellant Re: Failure to File CAIS
+08:APE NC LTR     - Letter Sent to Appellee Re: Failure to File CAIS
+08:APPEAR DISP    - Motion for Appearance Disposed
+08:APPEARANCE     - Entry of Appearance (and for Ratification, etc.)
+08:APPENDIX FLD   - Appendix Filed
+08:APPT CNS DSP   - Motion Requesting Appointment of Counsel Disposed
+08:ARGUE DISP     - Motion for Oral Argument disposed
+08:AT ISSUE       - At Issue
+08:AUTHOR DISP    - Motion to show Authorities disposed
+08:AUTHORITIES    - Motion to show authorities
+08:BANKRUPTCY     - Notice of Bankrupcy Proceeding filed
+08:BOND AMENDED   - Appeal Bond Amended
+08:BOND DUE       - Appeal Bond Due
+08:BOND FILED     - Appeal Bond Filed
+08:BRIEF DUE      - Brief Due
+08:BRIEF FILED    - Brief Filed
+08:BRIEF RECD     - Brief Received
+08:CAIS ANT F     - Civil appeals information sheet filed ant
+08:CAIS APE F     - Civil appeals information sheet filed by ape
+08:CASE FORWARD   - Case Forwarded to Higher Court
+08:CASE RECEIVD   - File received by Court of Criminal Appeals
+08:CASE RETURN    - Case Returned from Higher Ct.
+08:CASE STORED    - Case Stored
+08:CCOPY FILED    - Certified Copy Filed
+08:CERT COPIES    - Certified Copies Filed
+08:CLARIFY DISP   - Motion to Clarify Disposed
+08:CLK REC DUE    - clerk record due
+08:CLK REC FLD    - Clerk's record filed
+08:CLK REC NP     - Notice to party's that clerk's record not paid
+08:CLK REC RECD   - Clerk's record received
+08:COMPEL DISP    - Motion to Compel Disposed
+08:CONSOL DISP    - Motion to Consolidate Disposed
+08:CONSOL FILED   - Motion to Consolidate Filed
+08:CONSTABL RET   - Constable Return
+08:CONTEMP DISP   - Motion for Contempt Disposed
+08:CONTEST FLD    - Contest filed
+08:CONTIN DISP    - mt for continuance disposed
+08:CORR JUDG      - Corrected Judgment Entered
+08:CORR MAN ISS   - Corrected Mandate Issued
+08:CORRECT DISP   - Motion to Correct Disposed
+08:CTR RPT DUE    - Court Reporter Monthly Report Due
+08:D/S FILED      - docketing statement filed
+08:D/S RECD       - Docketing statement received
+08:DEATH DISP     - Suggestion of Death Disp
+08:DEC BD DISP    - Motion to decrease bond disposed
+08:DECISION       - Higher Court Decision
+08:DECREASE BD    - Motion to decrease bond (supersedeas, etc.)
+08:DEF BRF NTS    - Defective Brief Notice
+08:DEFECT NOA     - Defective Notice of Appeal Filed
+08:DEPO FILED     - Deposition filed
+08:DISM DISP      - Motion for Dismissal Disposed
+08:DISM FILED     - Motion for Dismissal Filed
+08:DISMISSAL      - Case is to be dismissed for failure to pay fil fee
+08:DISQUALIFY     - Motion to Disqualify Justice
+08:DUPL MAN ISS   - Duplicate Mandate Issued
+08:ELCSOF FILED   - electronic sfacts Filed
+08:ELEC TAPES     - Electronic Tapes filed/Statement of Facts
+08:ELSOF TENDER   - electronic statement of facts tendered
+08:EN BANC DISP   - Motion for En Banc Review disposed of
+08:EN BANC REVW   - En Banc Review
+08:EXH DISPOSED   - Exhibits Disposed Of
+08:EXH DUE        - Exhibits Due
+08:EXH FILED      - Exhibits Filed
+08:EXH NOTICE     - Exhibit Notice (Attys Notified to Pick Up Exhbits)
+08:EXH RET TRCT   - Exhibits Returned to Trial Court
+08:EXH TENDER     - Exhibits Tendered
+08:EXP MAN DISP   - Motion to Expedite Mandate Disposed
+08:EXP MANDATE    - Motion to Expedite Mandate
+08:FF/CCL DUE     - Findings of Fact and Conclusions of Law Due
+08:FF/CCL FILED   - Findings of Fact & Conclusion of Law Filed
+08:HAB COR FLD    - Petition for Writ of Habeas Corpus Filed
+08:HABCOR DISP    - Petition of Habeas Corpus disposed
+08:INC BD DISP    - Motion to Increase Bond Disp
+08:INQUIRY        - Letter of Inquiry
+08:INQUIRY RESP   - Letter of Inquiry Response
+08:INSP FILED     - Motion to Inspect filed
+08:INTERV DISP    - Motion to Intervene disposed
+08:ISS WR DISP    - Motion for Issuance of Writ Disposed
+08:JBRIEF DUE     - Jurisdictional Brief due
+08:JBRIEF FILED   - Jurisdictional Brief Filed
+08:JUDG ENTERED   - Judgment Entered by Court of Appeals
+08:JUDG WITHDRN   - Judgment Withdrawn
+08:JUDGMENT       - Judgment entered by the Trial Court
+08:JUDGMT MAIL    - Copy of Judgment Mailed
+08:JURIS DISP     - Motion Regarding Court''s Jurisdiction Disp
+08:JURISDICTION   - Motion Regarding Court''s Jurisdiction
+08:LETTER BRIEF   - Letter Brief or Quotations of Authority
+08:LETTER FEE     - Collection letter on Filing Fee
+08:LETTER FILED   - Attys, Ant, Ape (waive argu., for info., etc.)
+08:LETTER RECVD   - LETTER RECEIVED
+08:LETTER SENT    - Letter Sent by the Court
+08:LIST OF AUTH   - List of Authorities
+08:LTR SENT       - letter sent
+08:LV INJUNCTON   - Motion for leave to file injunction
+08:LV MANDAMUS    - Motion for leave to file mandamus
+08:MANDATE ISS    - Mandate Issued
+08:MEM OF AUTH    - Memorandum of Authorities
+08:MNT FILED      - Motion for New Trial Filed
+08:MO REH DUE     - Motion for Rehearing Due
+08:MODIFY DISP    - Motion to Modify Disp
+08:MT ABATE       - Motion to Abate filed
+08:MT ACCELERAT   - Motion to Accelerate Appeal Filed
+08:MT AFFIRM      - Motion to Affirm Judgment of Trial Court
+08:MT AMBRF DSP   - Motion to amend brief disposed
+08:MT AMBRF FLD   - Motion to amend brief
+08:MT AMEN TRAN   - Motion to Amend Transcript
+08:MT APPEAR      - Motion for Appearance
+08:MT APPT CNSL   - Motion to appoint counsel
+08:MT ARGUE       - Motion for Oral Argument
+08:MT CERT DISP   - Motion to Certify Question Disposed
+08:MT CERTIFY     - Motion to certify question
+08:MT CLARIFY     - Motion to Clarify Judgment, Order, etc.
+08:MT COMPEL      - Motion to Compel
+08:MT CONT DISP   - Motion to Continue Disposed
+08:MT CONTEMPT    - Motion for Contempt
+08:MT CONTINUE    - Motion to continue (appeal, hearing date, etc.)
+08:MT CORRECT     - Motion to Correct
+08:MT DIS DISP    - Motion to Dissolve Disposed
+08:MT DISSOLVE    - Motion to Dissolve (injunction, etc.)
+08:MT EXPEDITE    - Motion to advance or expedite
+08:MT FILE DISP   - Motion to File Disp
+08:MT INC BOND    - Motion to Increase Bond
+08:MT INSP        - Motion to Inspect filed
+08:MT INSP DISP   - Motion to Inspect Disposed
+08:MT INTERVENE   - Motion to Intervene
+08:MT ISS WRIT    - Motion for issuance of Writ (or Process)
+08:MT MED DISP    - Motion to Mediate Disposed
+08:MT MODIFY      - Motion to Modify
+08:MT OBT REC     - Motion to obtain record
+08:MT PHV DISP    - Motion fo Appear Pro Hac Vice
+08:MT PHV FILED   - Motion to Appear Pro Hac Vice
+08:MT POSTPONE    - Motion for Postponement
+08:MT PUB         - Motion to Publish Opinion
+08:MT PUB DISP    - Motion to Publish Opinion disposed
+08:MT R&REM       - Motion to Reverse and Remand
+08:MT R&REN       - Motion to Reverse and Render
+08:MT RECONSIDR   - Motion to Reconsider
+08:MT RECUSE      - Motion to Recuse
+08:MT REINSTATE   - Motion to reinstate appeal
+08:MT RELIEF      - Motion for Relief filed
+08:MT REMIT       - Motion for Remittitur filed
+08:MT REPLY BRF   - Motion to file reply brief
+08:MT RESCIND     - Motion to Rescind Filed
+08:MT SET ASIDE   - Motion to set aside
+08:MT SEVER       - Motion to Sever
+08:MT SPEND 73    - Motion to suspend rule 73
+08:MT STAY        - Motion to Stay
+08:MT STAY DISP   - Motion to Stay Disp.
+08:MT STRIKE      - Motion to Strike
+08:MT STRK DISP   - Motion to Strike Disp
+08:MT SUB ATTY    - Motion to substitute Attorney
+08:MT SUB DISP    - Motion to substitute attorney Disposed
+08:MT SUP BRIEF   - Motion to supplement brief
+08:MT SUP REC     - Motion to supplement record
+08:MT SUP TRANS   - Motion to supplemental transcript
+08:MT TEMP ORDR   - Motion for Temporary Order
+08:MT TO FILE     - Motion for leave to file
+08:MT TO MED      - Motion for Mediation
+08:MT TRANSFER    - Motion to Transfer case to another Court
+08:MT TRSF DISP   - Motion to Transfer case to another Court disp
+08:MT VACATE      - motion to vacate
+08:MT WDR APL     - Motion to Withdraw Appeal
+08:MT WDR ATTY    - Motion to Withdraw Attorney
+08:MT WDR DISP    - Motion to Withdraw appeal disposed
+08:MT WDR EXH     - Motion for Leave to Withdraw Exhibits
+08:MT WDR FILED   - Motion to Withdraw appeal filed
+08:MT WDR OPIN    - Motion to Withdraw Opinion
+08:MT WDR ORD     - motion to withdraw order
+08:MT WDR REC     - Motion to Withdraw Record
+08:NO ANT BR      - Letter Sent Re: No Appellant''s Brief Filed
+08:NO APP BR      - Notice to appellant that brief was not filed.
+08:NO CLK REC     - No clerk's record received
+08:NO PDR         - No petition for dis review filed
+08:NO REHEAR      - No rehearing filed
+08:NO RPT REC     - No reporter's record will be filed
+08:NO RPT RECD    - No reporter's record received
+08:NOA DUE        - Notice of Appeal Due
+08:NOA FILED      - Notice of Appeal Filed
+08:NOTICE FILED   - Notice filed
+08:NOTICE SENT    - Notice Sent Re: Appeal Filed/Record Due Date
+08:NPT JUDGMENT   - Nunc Pro Tunc Judgment
+08:NPT OPINION    - OPINION ISSD
+08:NPT ORDER      - Nunc Pro Tunc Order
+08:NUMBR VOIDED   - Number Voided
+08:OBJECT DISP    - Objection Disposed
+08:OBJECT FILED   - Objection Filed
+08:OBRIEF DISP    - Order Atty. to file brief disp
+08:OBRIEF FILED   - Order Attorney to file brief
+08:OBT REC DISP   - Motion to Obtain the Record Disposed
+08:OPIN TO PUB    - Opinion to publishers
+08:OPIN WITHDRN   - Opinion Withdrawn
+08:OPINION ISSD   - Opinion Issued
+08:ORD APT ATTY   - order appointing attorney from trial court
+08:ORD ENTERED    - Order Entered
+08:ORD RESCIND    - Order Rescinded
+08:ORD WITHDRN    - Order Withdrawn
+08:ORDER REVIEW   - Order for Review
+08:ORDER SENT     - Order Sent to Trial Court
+08:OREC DISP      - Order Record Disposed
+08:OREC FILED     - Order Record Filed
+08:PAUPER OATH    - Pauper''s Oath Filed
+08:PDR DISP       - Petition for discretionary disposed
+08:PDR DUE        - petition for discretionary review due
+08:PDR FILED      - Petition for discretionary
+08:PET REV FLD    - Petition for review filed
+08:POSTPON DISP   - Motion to Postpone disposed
+08:PRO AB DUE     - Pro Se's Amended Brief Due
+08:PRO BR DUE     - Pro Se Brief Due
+08:PRO SB DUE     - Pro Se Supplemental Brief Due
+08:PTYS NC LTR    - Letter Sent to Parties Re: Failure to File CAIS
+08:R&REM DISP     - Mot to Reverse & Remand Disp
+08:R&REN DISP     - Motion to reverse and render disposed
+08:RE NEW ATTY    - New Attorney Retained
+08:REC SHIPPED    - Record Shipped
+08:RECALL DISP    - Recall Mandate disposed
+08:RECALL MAND    - Recall Mandate
+08:RECNSDR DISP   - Motion to Reconsider disposed
+08:RECORD DUE     - Record Due
+08:RECUSE DISP    - Motion to Recuse Disp
+08:REHEAR DISP    - Motion for Rehearing Disposed
+08:REHEAR DUE     - Rehearing Due
+08:REHEAR FILED   - Motion for Rehearing Filed
+08:REHEAR LATE    - Rehearing filed outside of the 15-day grace period
+08:REHEAR TNDR    - Motion for Rehearing Tendered
+08:REINST DISP    - Motion to reinstate disposed
+08:REINSTATED     - Reinstate Appeal
+08:RELIEF DISP    - Motion for Relief disposed
+08:REMANDED       - Case Remanded - Pending Disposition On Remand
+08:REMIT DISP     - Motion for Remittitur Disposed
+08:REMITTITUR     - Remittitur Filed
+08:REPLY BR DSP   - Motion to file reply brief disp
+08:REPLY BR DUE   - Reply Brief Due
+08:REPLY BR FLD   - Reply Brief Filed
+08:REPLY BR REC   - Reply Brief Received
+08:REQ ARG        - Request for Oral Argument
+08:REQ ARG DISP   - Request for Oral Argument Disposed
+08:REQ FF/CCL     - Request Findings of Fact & Conclusions of Law
+08:RESCIND DISP   - Motion to Rescind Disposed
+08:RESET SMIS     - Submission reset
+08:RESP DUE       - Response Due
+08:RESPONSE       - Response to Motion
+08:RHR TENDER     - Rehearing tendered
+08:RPLY BR TNDR   - Reply Brief Tendered
+08:RPT REC DUE    - court reporter record due
+08:RPT REC FLD    - Reporter's record filed
+08:RPT REC NP     - Notice to parties reporter's record not paid
+08:RPT REC RECD   - Reporter's record received
+08:RSP TENDERED   - Response Tendered
+08:SBRIEF DISP    - mt to supplement brief disposed
+08:SBRIEF FILED   - Supplemental Brief Filed
+08:SBRIEF RECD    - Supplemental Brief received
+08:SCLK REC DUE   - supplemental clerk's record due
+08:SCLK REC FLD   - supplemental clerk's record filed
+08:SET BD DISP    - Motion to Set Amount of Supersedeas Bond Disp
+08:SET BOND       - Motion to Set Amount of Supersedeas Bond
+08:SEVER DISP     - Motion to Sever Disposed
+08:SFACTS FILED   - Statement of facts filed
+08:SHERIFF RET    - Sheriff''s Return
+08:SHOW CAUSE     - Show Cause Hearing - Contempt
+08:SOF TENDERED   - Statement of facts tendered
+08:SPET FILED     - Supplemental Petition for Mandamus, et al Filed
+08:SPND 73 DISP   - Motion to Suspend Rule 73 Disposed
+08:SPSOF FILED    - Supplemental Statement of Facts filed
+08:SPSOF TENDER   - Supplemental Statement of Facts tendered
+08:SRPT REC DUE   - supplemental reporter's record due
+08:SRPT REC FLD   - Supplemental reporter's record filed
+08:SSFACT DUE     - Supplemental Statement of Facts Due
+08:ST ASID DISP   - Motion to set aside disposed
+08:STAY MANDATE   - Stay Issuance of Mandate
+08:STIPULATION    - Stipulation for Counsel
+08:STRAN TENDER   - Supplemental Transcript tendered
+08:STRANS DISP    - Mot ext time file Strans Disp
+08:STRANS DUE     - Supplemental Transcript Due
+08:STRANS FILED   - Supplemental Transcript filed
+08:SUB ATT DISP   - Motion to Substitute Attorney Disposed
+08:SUB OPINION    - Substitute Opinion
+08:SUBMISSION     - Submission
+08:SUBMITTED      - Submitted
+08:SUGG BANKRUP   - Suggestion of Bankruptcy
+08:SUGG DEATH     - Suggestion of Death
+08:SUP BR DUE     - Supplemental brief due
+08:SUP BR RECVD   - supplemental brief received
+08:SUP BRF DISP   - Motion to supplement brief disposed
+08:SUP D/S FLD    - Supplemental docketing statement filed
+08:SUP OPINION    - Supplemental Opinion
+08:SUP REC DISP   - Motion to supplement record disposed
+08:SUP REC DUE    - Supplemental Record Due
+08:SUP SOF DISP   - Mot supplement sof disposed
+08:SUP TRAN DSP   - Motion to supplement transcript disposed
+08:SUSTAIN        - Objection to Mediation Sustained
+08:TR LATE L1     - 1st Letter Sent Re: Late Tendered Transcript
+08:TRANS DUE      - Transcript Due
+08:TRANS FILED    - Transcript Filed
+08:TRANS TENDER   - Transcript Tendered
+08:TRANSC TAPES   - Transcribed Tapes of Statement of Facts
+08:TRANSFER IN    - Case Transferred in
+08:TRANSFER OUT   - Case Transferred out
+08:TRANSFER REC   - Motion to transfer st of facts, etc.
+08:TRANSFR DISP   - Motion to Transfer disposed
+08:TRNSFER DISP   - Motion to transfer statement of facts disposed
+08:VIDEO TAPES    - Video Tapes filed/Statement of Facts
+08:WAIVER         - Waiver to file brief
+08:WD PUB DISP    - Motion to Withdraw Publication Disposed
+08:WD PUB FILED   - Motion to Withdraw Publication Filed
+08:WDR APL DISP   - Motion to Withdraw Appeal Disposed
+08:WDR APPL FLD   - Mtn to withdraw appeal filed
+08:WDR ATT DISP   - Motion to Withdraw Attorney Disposed
+08:WDR ATT FLD    - Mtn to withdraw attorney filed
+08:WDR EXH DISP   - Motion for Leave to Withdraw Exhibits Disp
+08:WDR MAN DISP   - motion to withdraw mandate disposed
+08:WDR MANDATE    - Withdraw Mandate
+08:WDR OPN DISP   - Motion to Withdraw Opinion Disposed
+08:WDR ORD DISP   - Motion to Withdraw Order Disposed
+08:WDR REC DISP   - Motion to Withdraw Record Disposed
+08:WOE DENIED     - Writ of error denied
+08:WOE DISMISS    - Writ of error dismissed
+08:WOE DUE        - Application for Writ of Error Due
+08:WOE FILED      - Application for Writ of Error Filed
+08:WOE GRANTED    - Writ of error granted
+08:WRIT DISP      - Writ Disposed
+08:WRIT FILED     - Writ Filed
+08:XABRF DISP     - Extension of Time to File Amended Brief Disposed
+08:XABRF FILED    - Mot. for Ext. File Amended Brief
+08:XADV DISP      - Motion to advance case dispose
+08:XADV FILED     - Motion to advance case filed
+08:XAFFID DISP    - Mtn. to Extend time to file Affidavit - Disposed
+08:XAFFID FILED   - Mtn. to extend to file Affidavid
+08:XARGUE DISP    - Motion for oral argument disposed
+08:XBOND DISP     - Motion - Ext to File Bond Disp
+08:XBOND FILED    - Motion - Ext. to File Bond
+08:XBR LENG DSP   - Motion for extension of brief length disposed
+08:XBR LENGTH     - Ext of Brief Length
+08:XBRIEF DISP    - Mot. for Ext. File Brief Disp.
+08:XBRIEF FILED   - Mot. for Ext. to File Brief
+08:XBRLENG DISP   - Extension on brief length disposed
+08:XCLK REC DSP   - exension on clerk's record disposed
+08:XCLK REC FLD   - extension on clerk's record
+08:XELEC SFACTS   - motion to extend time to file electronic sfacts
+08:XJBRF DISP     - Mot. Ext File Juris Brief Disp
+08:XJBRF FILED    - Mot. Ext. time to File Juris Brief
+08:XMED DISP      - Motion for Extension of Time to Mediate Disposed
+08:XMED FILED     - Motion for Extension of Time to Mediate
+08:XNOA DISP      - Motion Extend Time to File Notice of Appeal Disp
+08:XNOA FILED     - Motion Extend Time to File Notice of Appeal
+08:XPDR DISP      - Ext to file Petition for Discretionary Review disp
+08:XPDR FILED     - Ext to File Petition for Discretionary Review-CCA
+08:XPET REV DSP   - Ext to file petition for review disposed
+08:XPET REV FLD   - Ext to file petition for review
+08:XREC DISP      - Mot ext time file record disp
+08:XREC FILED     - Extend time to file Record
+08:XRECONSIDER    - Extension of time to file reconsider
+08:XREHEAR DISP   - Mot-Ext to File Rehear Disp
+08:XREHEARING     - Mot to Ext Time File Rehearing
+08:XRESP DISP     - Motion for Extension to file Response - Disposed
+08:XRESP FILED    - Motion for Extension to file Response Filed
+08:XRPT REC DSP   - extension on reporter's record disposed
+08:XRPT REC FLD   - extension on reporter's record
+08:XSBRF DISP     - Mot.-Ext. File Sup Brief Disp
+08:XSBRF FILED    - Mot. for Ext. File Sup. Brief
+08:XSBRF RECD     - Extension to file Supplemntal Brief Received
+08:XSFACT DISP    - Mot for Ext Stat of Facts Disp
+08:XSFACT FILED   - Mot-Ext. to File Stat of Facts
+08:XSPSOF DISP    - Mot ext time Sup Sfacts Disp
+08:XSPSOF FILED   - Mot Ext time file Sup Sfacts
+08:XSTRAN FILED   - Mot ext time file Strans
+08:XSTRANS DISP   - Mot ext time file Strans Disp
+08:XTRANS DISP    - Mot for Ext Transcript Disp
+08:XTRANS FILED   - Mot - Ext. to File Transcript
+08:XWOE DISP      - Motion to Extend Time to File Writ of Error Disp
+08:XWOE FILED     - Motion to Extend Time to File Writ of Error Filed
+08:XWRIT DISP     - Motion to Extend Time to file Writ Disp.
+08:XWRIT DUE      - Motion to Extend time to file Writ due
+08:XWRIT FILED    - Motion to Extend time to file Writ
+
+
+09:Post Disposition Proceedings
+09:CR APP         - Court of Criminal Appeals
+09:EN BAC         - En Banc
+09:FED CT         - Federal Court
+09:REHEAR         - Rehearing
+09:REMAND         - Case Remanded
+09:SUP CT         - Supreme Court
+09:US SCT         - Supreme Court of the United States
+
+
+10:Reason Set-Submitted Calendr
+10:EXT REHEAR     - Extension of time to file rehearing
+10:ORIG PROC      - Original Proceeding
+10:REHEARING      - Rehearing
+10:SUBMITTED      - Submitted
+
+
+11:Description of Events
+11:ADL            - Ad Litem
+11:AM CUR         - Amicus Curiae
+11:ANT            - Appellant
+11:APE            - Appellee
+11:APP            - Applicant
+11:ATTGEN         - Attorney General
+11:CLK            - Clerk
+11:CR             - Criminal filing
+11:CT MTN         - Court of Appeals own Motion
+11:CTR            - Court Reporter
+11:CV             - Civil filing
+11:CX ANT         - Cross Appellant
+11:CX APE         - Cross-Appellee
+11:INMATE         - Inmate
+11:JDG            - Judge
+11:JOINT          - Joint
+11:MED            - Mediator
+11:MEDIA          - Mediation
+11:OTH            - Other
+11:PRO SE         - Pro Se
+11:REL            - Relator
+11:RES            - Respondent
+11:RL PRT         - Real Party in Interest
+11:ST ATT         - State Prosecuting Attorney
+11:STA            - State
+11:TC             - trial court
+
+
+12:Case Status on Calendar
+12:ABATED         - Abated
+12:BANKRUPTCY     - Bankruptcy
+12:CONSOLIDAT     - Consolidated
+12:DRAFT          - Draft
+12:EN BANC        - En Banc
+12:NO DRAFT       - No Draft
+12:TO R/C         - To Rest of Court
+12:TO S/P         - To sitting panel
+
+
+14:Calendars
+14:APPL           - Appeal to Higher Court
+14:DISM           - Dismissal
+14:HOLD           - Hold
+14:ISSU           - At Issue
+14:MOTN           - Motion
+14:ORGN           - Original Proceedings
+14:SMIS           - Submission
+14:SMIT           - Submitted
+14:STAT           - Status
+14:STOR           - Case Stored
+
+
+15:Reason Set-Status & Orig Pro
+15:32.1 DUE       - 32.1 Response due
+15:ABATED         - Abated
+15:ADR RPT DU     - Settle/Not Settle - ADR Report Due
+15:ANT AB DUE     - Appellant Amended Brief Due
+15:ANT BR DUE     - Appellant Brief Due
+15:ANT JB DUE     - Appellant''s Jurisdictional Brief Due
+15:ANT MT DUE     - Motion on appellant's brief due
+15:ANT RBF DU     - Appellant's reply brief due
+15:ANT SB DUE     - Appellant Sup. Brief Due
+15:APE AB DUE     - Appellee Amended Brief Due
+15:APE BR DUE     - Appellee Brief Due
+15:APE JB DUE     - Appellee''s Jurisdictional Brief Due
+15:APE MT DUE     - Motion on appellee's brief due
+15:APE SB DUE     - Appellee Sup. Brief Due
+15:APP AB DUE     - Appellant's Amended Brief Due
+15:APP BR DUE     - Applicant Brief Due
+15:APP JB DUE     - Appellant''s Jurisdictional Brief Due
+15:APP MT DUE     - Motion on appellant's brief due
+15:APP SB DUE     - Applicant Sup. Brief Due
+15:BOND DUE       - Bond Due
+15:CAIS DUE       - Civil Appeal Information Sheet Due
+15:CEN ST REV     - Central Staff Review
+15:CLK REC DU     - Clerk's record due
+15:CLK RECD       - Clerk's record received
+15:CLK RSP DU     - Clerk's response due
+15:COMP REC       - Compliance Record
+15:CTR RPT DU     - Court Reporter Monthly Report Due
+15:CXANTBR DU     - Cross-appellant's brief due
+15:CXAPEBR DU     - Cross-appellee's brief due
+15:EN BANC HR     - En Banc Hearing
+15:EXH DUE        - Exhibits Due
+15:FEE DUE        - File fee due, not paid
+15:FF/CCL DUE     - Findings of Fact & Conclusions of Law Due by Tr Ct
+15:IN BNKRTCY     - In Bankruptcy - Stayed until further notice
+15:JBRIEF DUE     - Jurisdictional Brief Due
+15:JUR REVIEW     - Jurisdiction Review By Court Pending
+15:LATE NOA       - Late Notice of Appeal filed
+15:MANDAT DUE     - Mandate Due
+15:MD REC DUE     - Modification of Record Due
+15:MEDIATION      - Mediation
+15:MO REH DUE     - Motion for Review
+15:MOTN DUE       - Motion Due
+15:MT PHV DISP    - Motion to Appear Pro Hac Vice disposed
+15:MT WDR DUE     - Motion to withdraw due
+15:NOA DUE        - Notice of Appeal due
+15:OPINION IS     - Opinion to issue
+15:ORIG PROC      - Original Proceedings
+15:PDR DUE        - Petition for Discretionary Review Due
+15:PRO AB DUE     - Pro Se's Amended Brief Due
+15:PRO BR DUE     - Pro Se's Brief Due
+15:PRO RSP DU     - Pro se response due
+15:PRO SB DUE     - pro se supplemental brief due
+15:RECORD DUE     - Record Due
+15:REH RSP DU     - Response on rehearing due
+15:REHEAR DUE     - Rehearing due
+15:REL BR DUE     - Relator's brief due
+15:RES BR DUE     - Respondent's brief due
+15:RESP DUE       - Response Due
+15:RET-NO ACT     - Returned, No Actions
+15:RPT REC DU     - Reporter's record due
+15:RPT RECD       - Reporter's record received
+15:RPT RSP DU     - Reporter's response due
+15:RSP ANT BR     - Response Due Re: Appellant''s Brief
+15:RSP ANT JB     - Response Due Re: Appellant's Jurisdictional Brief
+15:RSP APP BR     - Response Due Re: Appellant''s Brief
+15:RSP APP SB     - Response Due Re:  Appellant's Supplemental Brief
+15:RSP CLK DU     - Response on clerks record
+15:RSP CLK NP     - Resp from party regarding clerk's prep fee
+15:RSP DBR DU     - Response due on defective brief
+15:RSP PRO BR     - Response Due Re: Pro Se Brief
+15:RSP RPT DU     - response for reporters record due
+15:RSP RPT NP     - Response from party regarding reporter's fees
+15:SCLK RC DU     - supplemental clerk record due
+15:SHOW CAUSE     - Show Cause Hearing - Contempt of Court
+15:SPET DUE       - Supplemental Petition for Mandamus, et al Due
+15:SREC DUE       - Supplemental Record due
+15:SRPT RC DU     - supplemental reporter record due
+15:STA AB DUE     - State's Amended Brief Due
+15:STA BR DUE     - State Brief Due
+15:STA JB DUE     - State''s Jurisdictional Brief Due
+15:STA MT DUE     - Motion on state's brief due
+15:STA SB DUE     - State Sup. Brief Due
+15:STF REVIEW     - Staff Reviewing Record
+15:STRAN RECD     - Supplemental transcript received
+15:STRANS DUE     - Supplemental Transcript Due
+15:TR MTN DUE     - Motion on transcript due
+15:TRANS DUE      - Transcript Due
+15:WOE DUE        - Writ of Error Due
+
+
+16:Reason Set - Motion Calendar
+16:ACCELERATE     - Motion to Accelerate Appeal
+16:AMEND REC      - Amend Record (Supplement Exhibits, brief, etc.)
+16:AMEND TRAN     - Motion to Amend Transcript
+16:ARGUMENT       - Motion for oral argument on motion
+16:AUTHORITY      - Motion to show authorities
+16:BANKRUPTCY     - In Bankruptcy
+16:CERTIFY        - Motion to Certify Question
+16:CONSOL APP     - Consolidate Appeals
+16:CONTEMPT       - Motion for Contempt
+16:CONTINUE       - Motion to Continue (Appeal, etc.)
+16:DISMISSAL      - Motion to dismiss
+16:DISQUALIFY     - Motion to disquality Justice
+16:DISSOLVE       - Motion to Dissolve (Injunction, etc.)
+16:EXP MANDAT     - Motion to Expedite Mandate
+16:EXPEDITE       - Motion to expedite
+16:EXT ADV        - Mot to Advance Submission
+16:EXT AFFID      - Extend time to file Affidavit
+16:EXT ANT AB     - Ext. of Time - Appellant's Amended Brief
+16:EXT ANT BR     - Ext. of Time - Appellant Brief
+16:EXT ANT JB     - Ext. time - Appellant''s Jurisidictional Brief
+16:EXT ANT SB     - Ext. of time - Appellant''s Supplemental Brief
+16:EXT APE AB     - Ext. of Time - Appellee's Amended Brief
+16:EXT APE BR     - Ext. of Time - Appellee Brief
+16:EXT APE JB     - Ext. of time - Appellee''s Jurisdictional Brief
+16:EXT APE SB     - Ext. Time - File Appellee''s Supplemental Brief
+16:EXT APP AB     - Ext. of Time - Appellant's Amended Brief
+16:EXT APP BR     - Ext. of Time - Applicant Brief
+16:EXT APP JB     - Ext. of time - Appellant''s Jurisdictional Brief
+16:EXT APP SB     - Ext. Time - File Appellant''s Supplemental Brief
+16:EXT BOND       - Ext. of Time To File Bond
+16:EXT CLK RC     - extension on clerk record
+16:EXT EL SOF     - motion to extend time to file electronic sfacts
+16:EXT MEDIAT     - Motion for Extension of Time to Mediate
+16:EXT NOA        - Extend Time to File Notice of Appeal
+16:EXT PRO BR     - Motion For Extension of Time to File Pro Se Brief
+16:EXT RECORD     - Ext of time file record
+16:EXT REHEAR     - Extension on rehearing
+16:EXT RESP       - Extend time to file Response
+16:EXT RPT RC     - extension on reporter's record
+16:EXT SFACTS     - Ext. of Time- State. of Facts
+16:EXT SSFACT     - Ext of Time-Sup State of Facts
+16:EXT STA AB     - Ext. of Time - State's Amended Brief
+16:EXT STA BR     - Ext. of Time - State Brief
+16:EXT STA JB     - Ext. of time - State''s Jurisdictional Brief
+16:EXT STA SB     - Ext. Time - File State''s Supplemental Brief
+16:EXT STRANS     - Ext. of Time - Sup. Transcript
+16:EXT SUP BR     - Ext. of Time - Sup. Brief
+16:EXT TRANS      - Ext. of Time - Transcript
+16:INC BOND       - Increase Bond
+16:INSPECT        - Motion to Inspect
+16:INTERVENE      - Motion to Intervene
+16:ISSUE WRIT     - Motion for Issuance of Writ (or process)
+16:JURIS          - Motion Regarding Court`s Jurisdiction
+16:LV INJUNCT     - Leave for injunction
+16:LV MANDAM      - Leave for mandamus
+16:MODIFY         - Motion to Modify
+16:MT ABATE       - Motion to Abate
+16:MT AFFIRM      - Motion to Affirm Judgment in Trial Court
+16:MT AMBRF       - Motion for leave to amend brief
+16:MT APPEAR      - Motion for Appearance
+16:MT CLARIFY     - Motion to Clarify Judgment, Order, etc.
+16:MT COMPEL      - Motion to Compel
+16:MT CORRECT     - Motion to Correct
+16:MT COUNSEL     - Motion for counsel
+16:MT DEC BD      - Motion to Decrease Bond (supersedeas, etc)
+16:MT MEDIATE     - Motion to Mediate
+16:MT OBT REC     - Motion to obtain record
+16:MT PHV         - Motion to Appear Pro Hac Vice
+16:MT R&REM       - Motion to Reverse and Remand
+16:MT R&REN       - Motion to reverse and render
+16:MT RECALL      - Motion to recall Mandate
+16:MT RECUSE      - Motion to Recuse
+16:MT REMIT       - Motion for Remittitur
+16:MT STAY        - Motion to Stay
+16:MT TO FILE     - Motion to File (Trans., Court Brief, etc.)
+16:MT WDR ORD     - motion to withdraw order
+16:OBJECTION      - Objection
+16:POSTPONE       - Motion for Postponement
+16:PUBLICATIN     - Publication
+16:PUBLISH        - Motion to Publish Opinion
+16:RECONSIDER     - Motion to Reconsider
+16:REHEARING      - Rehearing
+16:REINSTATE      - Motion to Reinstate Appeal
+16:RELIEF         - Motion for Relief
+16:REPLY BRF      - Motion to file reply brief
+16:REQ ARG        - Request for Oral Argument
+16:RESCIND        - Motion to Rescind
+16:RESPONSE       - Response
+16:REV & REM      - Motion to Reverse and Remand
+16:SET ASIDE      - Motion to set aside
+16:SET BOND       - Motion to Set Amount of Supersedeas Bond Disp
+16:SEVER          - Motion to sever
+16:SPEND 73       - Motion to suspend Rule 73
+16:STRIKE         - Motion to Strike
+16:SUB ATTY       - Substitute Attorney
+16:SUGG DEATH     - Suggestion of Death
+16:SUP BRIEF      - Motion to supplement brief
+16:SUP RECORD     - Motionto supplement record
+16:SUP SOF        - Motion to supplement statement of facts
+16:SUP TRANS      - Motion to supplement transcript
+16:TEMP ORDER     - Motion for Temporary Order
+16:TRANSFER       - Motion to transfer st of facts, etc.
+16:VACATE         - mt to vacate
+16:WDR APPEAL     - Appeal Withdrawn
+16:WDR ATTY       - Withdraw Attorney
+16:WDR EXH        - Motion for Leave to Withdraw Exhibits
+16:WDR MANDAT     - Withdraw Mandate
+16:WDR OPIN       - Motion to Withdraw Opinion
+16:WDR ORDER      - motion to withdraw order
+16:WDR RECORD     - Withdraw Record
+16:X CXANT BR     - Extension of time to file cross-appellant's brief
+16:X CXAPE BR     - Extension of time to file cross-appellee's brief
+16:XBR LENGTH     - Ext Brief Length
+16:XRECONSIDR     - Extension of time to file reconsideration
+
+
+17:Dispositions
+17:ABATED         - Abated
+17:AFFIRM         - Affirmed
+17:AFRRTC         - Aff/Rev & Remanded to Trial Ct
+17:AFRVRM         - Affirmed in part and reversed and remanded in part
+17:AFRVRN         - Affirmed/Reversed & Rendered
+17:CARJTC         - Ct App Rev & Jud Tr Ct Affirmd
+17:CARVAF         - Court of Appeals Reversed and Affirmed
+17:CARVRE         - Reversed & Remanded to Ct. App
+17:CAVARM         - Court of Appeals Vacated and Remanded to Trial Cou
+17:CONSOL         - Consolidated/Voids
+17:DEFER          - Deferred
+17:DENIED         - Motion or Writ Denied
+17:DISM           - Dismissed
+17:DISMJR         - Dismissed-Want of Jurisdiction
+17:GRANT          - Motion or Writ Granted
+17:HCRDEN         - Habeas Corpus Relief Denied
+17:HCRGRT         - Habeas Corpus Relief Granted
+17:MODIFY         - Modified/Reformed and Affirmed
+17:MOOT           - Moot
+17:MTNDUE         - Motion due
+17:NO ACT         - Motion or Writ No Action Taken
+17:OCPGRT         - Original Contempt Proc Granted
+17:OTHDIS         - Otherwise Disposed
+17:OVRULE         - Overruled
+17:REFAFF         - Reformed and Affirmed
+17:REFER          - Referred to Mediation
+17:REFNRE         - Refused - No Reversible Error
+17:REFUSE         - Refused
+17:REINST         - Re-Instate Appeal
+17:REMAND         - Remanded
+17:REMTCT         - Remanded Tr Ct For Pun Hearing
+17:REVACQ         - Reversed and Accquitted
+17:REVDIS         - Reversed and Dismissed
+17:REVREM         - Reversed and Remanded
+17:REVREN         - Reversed & Rendered
+17:RVRETC         - Reversed & Remanded to Tr. Ct.
+17:RVRNRM         - Reversed and rendered and remanded in part
+17:SEVER          - Case severed
+17:STAYED         - Stayed
+17:STRIKE         - Strike
+17:SUPREC         - Ordered to supplement record
+17:SUST           - Sustained (granted)
+17:TRANSF         - Case Transferred Out to another Court of Appeals
+17:TRAP74         - Trap 74 order
+17:VACATE         - Vacated
+17:VOIDED         - Voided
+17:WITHDR         - Withdrawn
+
+
+18:Judge Initials
+18:AJF            - Justice Fish
+18:ANS            - Justice Stewart
+18:BER            - Justice Rosenberg
+18:BHT            - Justice Tunks
+18:BJS            - Justice Stephens
+18:CAG            - Chief Justice Guittard
+18:CAW            - Justice Williams
+18:CBH            - Justice Howell
+18:CCH            - Justice Hollingsworth
+18:CEM            - Justice Miller, Jr.
+18:CFC            - Justice Charles F. Campbell
+18:CHS            - Justice Storey
+18:CIW            - Justice Wright
+18:CNM            - Justice McKay
+18:CRA            - Justice Ashworth
+18:CSC            - Justice Carver
+18:CTE            - Chief Justice Enoch
+18:CWM            - Chief Justice McGarry
+18:DGH            - Justice Hankinson
+18:DLB            - Justice Bridges
+18:EWS            - Justice Smith
+18:FAS            - Justice Shumpert
+18:FGE            - Justice Evans
+18:FJM            - Justice F. Maloney
+18:FVK            - Jistice Klingeman
+18:GEM            - Justice Miller
+18:GHR            - Justice Rowe
+18:GTB            - Justice Bissett
+18:GWW            - Justice Whitham
+18:HWH            - Justice Hopkins
+18:JAB            - Justice Baker
+18:JAD            - Justice Devany
+18:JAE            - Justice Ellis
+18:JAJ            - Justice James
+18:JAK            - Justice Kaplan
+18:JAM            - Justice Moseley
+18:JBB            - Justice Burnett
+18:JBM            - Justice Morris
+18:JBS            - Justice Smith
+18:JBZ            - Justice Zimmermann
+18:JCV            - Justice Vance
+18:JDO            - Justice Ovard
+18:JEK            - Justice Kinkeade
+18:JFO            - Justice Onion
+18:JGH            - Justice Hill
+18:JHW            - Justice Whittington
+18:JKA            - Justice Allen
+18:JLM            - Justice McCraw
+18:JNS            - Justice Sparling
+18:JOS            - Justice Spurlock
+18:JWW            - Justice Wolfe
+18:KBW            - Justice Wiggins
+18:LBM            - Justice Mitchell
+18:LBT            - Chief Justice Thomas
+18:MLW            - Justice M. Whittington
+18:NLH            - Justice Hecht
+18:PCG            - Justice Guillot
+18:PHD            - Justice Dial
+18:PNM            - Justice McClung
+18:PWN            - Justice Nye
+18:QAK            - Justice Keith
+18:RBM            - Justice Maloney
+18:RKW            - Justice Weaver
+18:RNB            - Justice Brown
+18:RRM            - Justice Murray
+18:RTS            - Justice Scales
+18:RWC            - Justice Chapman
+18:SFP            - Justice Preslar
+18:SLL            - Justice Lagarde
+18:TCC            - Justice Chadick
+18:TFC            - Justice Coleman
+18:TGS            - Justice Sharpe
+18:TLJ            - Justice James
+18:TMA            - Justice Akin
+18:TZR            - Justice Robertson
+18:WAB            - Justice Barber
+18:WAH            - Justice Hughes
+18:XXX            - (Justice Unknown)
+
+
+20:Reason Set-Dismissal Calendr
+20:DISMISSAL      - Dismissal of Case
+
+
+21:Reason Set-At Issue Calendar
+21:AT ISSUE       - At Issue
+
+
+22:Reason Set-Submission Cal.
+22:SUBMISSION     - Submission
+23:SUBMITTED      - Submitted
+
+
+24:Reason Set-Appeals Calendar
+24:CT REVIEW      - Higher Court Review
+24:EXT PDR        - Motion to Extend Time to File PDR
+24:EXT WOE        - Motion to Extend Time to File Writ of Error
+
+
+25:Reason Set-Case Stored Cal.
+25:BANKRUPTCY     - Bankruptcy
+25:CASE STORE     - Case Store
+26:ORIGINAL       - Original
+
+
+27:Dispositions for OCA Report
+27:ABATED         - OTHDIS
+27:AFFIRM         - AFFIRMED
+27:AFRRTC         - AFFREVREM
+27:AFRVRM         - AFFREVREM
+27:AFRVRN         - AFFREVREN
+27:CONSOL         - CONSOLVOID
+27:DEFER          - OTHDIS
+27:DENIED         - OTHDIS
+27:DISM           - DISMISSED
+27:DISMJR         - DISMISSED
+27:GRANT          - OTHDIS
+27:MODIFY         - MODREFAFF
+27:OTHDIS         - OTHDIS
+27:OVRULE         - OTHDIS
+27:REFAFF         - OTHDIS
+27:REFER          - OTHDIS
+27:REINST         - OTHDIS
+27:REMAND         - REVREMAND
+27:REVACQ         - OTHDIS
+27:REVDIS         - REVRENDER
+27:REVREM         - REVREMAND
+27:REVREN         - REVRENDER
+27:RVRETC         - REVREMAND
+27:RVRNRM         - REVREMAND
+27:VOIDED         - OTHDIS
+27:WITHDR         - OTHDIS
+
+
+28:Opinion Events
+28:ABATE DISP     - OPINION ISSD
+28:ADR RFR ORD    - OPINION ISSD
+28:COMPEL DISP    - OPINION ISSD
+28:CONSOL DISP    - OPINION ISSD
+28:JUDG ENTERED   - OPINION ISSD
+28:MT FILE DISP   - OPINION ISSD
+28:MT TO FILE     - OPINION ISSD
+28:MT WDR DISP    - OPINION ISSD
+28:NPT OPINION    - OPINION ISSD
+28:NPT ORDER      - OPINION ISSD
+28:NUMBR VOIDED   - OPINION ISSD
+28:ORD ENTERED    - OPINION ISSD
+28:R&REM DISP     - OPINION ISSD
+28:R&REN DISP     - OPINION ISSD
+28:SUB OPINION    - OPINION ISSD
+28:SUP OPINION    - OPINION ISSD
+28:WDR APL DISP   - OPINION ISSD
+28:WDR REC DISP   - OPINION ISSD
+28:WRIT DISP      - OPINION ISSD
+28:XBOND DISP     - OPINION ISSD
+28:XNOA DISP      - OPINION ISSD
