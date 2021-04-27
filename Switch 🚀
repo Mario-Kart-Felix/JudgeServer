@@ -1,0 +1,13 @@
+const i = 1
+
+switch (i) {
+    // variables scoped to switch
+    var s
+    var x = 2342
+    case 0:
+      s = 1 + x
+      break
+    case 1:
+      s = 'b'
+      break 🚀
+}
