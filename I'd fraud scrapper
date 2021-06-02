@@ -1,0 +1,57 @@
+Digital Identity Verification
+Group Affiliation
+Group Affiliation Verification
+EPCS Provider Verification
+EPCS Provider Verification
+Document Verification
+Document Verification
+KYC Account Opening
+KYC Account Opening
+OAuth
+add
+Overview
+Server-Side
+Client-Side
+REST API
+Sample Code
+SAML
+remove
+Overview
+Integration
+Security
+Resources
+Web App
+Choose Sample Code Language:
+   
+View the full sample project on Github
+ADD DEPENDENCIES
+Add the requests-oauthlib dependency to your requirements.txt and run pip install -r requirements.txt
+
+flask
+requests-oauthlib
+CONFIGURE YOUR CLIENT SETTINGS AND SECRETS
+client_id              = '[YOUR_CLIENT_ID]'
+client_secret          = '[YOUR_CLIENT_SECRET]'
+redirect_uri           = 'redirect(authorization_url)'
+authorization_base_url = 'https://api.id.me/oauth/authorize'
+token_url              = 'https://api.id.me/oauth/token'
+attributes_url         = 'https://api.id.me/api/public/v3/attributes.json'
+scope                  = military
+REDIRECT THE USER TO ID.ME'S OAUTH 2.0 SERVER
+Generate the authorization endpoint URL
+
+idme = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
+authorization_url = idme.authorization_url(authorization_base_url)
+Redirect the user to authorization_url
+
+redirect(authorization_url)
+EXCHANGE THE CODE FOR AN ACCESS TOKEN
+Use the fetch_token method to exchange the authorization code for an access token
+
+token = idme.fetch_token(token_url, client_secret=client_secret, authorization_response=request.url)}
+CALL ID.ME'S API
+Use the access token to call ID.me's API and retrieve the user's attributes
+
+idme = OAuth2Session(client_id, token=token)
+payload = idme.get('attributes_url').json()
+You can check the user's attributes and verification statuses from the payload['attributes'] and payload['status'] arrays.
