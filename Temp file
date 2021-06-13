@@ -1,0 +1,9 @@
+Tempfile: What is it and what does it do?
+Tempfile creates a temporary dataset which is valid only 
+in a single execution of commands in do-files or ado-files. 
+Alternatively, we can save a dataset and use it, and erase 
+it. Compared to this, tempfile is more efficient.
+Or, one can consider preserve/restore commands, but 
+preserve command stores only one dataset. 
+Syntax step1: tempfile data1 (declaring data name)
+Step2: commands referring to `data1’
